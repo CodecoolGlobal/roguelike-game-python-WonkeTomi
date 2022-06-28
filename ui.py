@@ -3,8 +3,10 @@ from util import clear_screen, key_pressed
 import time
 import msvcrt
 
+
 def display_room(room):
     pass
+
 
 def display_intro():
     print(''' 
@@ -79,7 +81,7 @@ def display_board(board):
                     if len(cell_to_print) == 1:
                         print(cell_to_print, end='')
                     else:
-                        pass
+                        print(emoji.emojize(cell_to_print))
                 print(' ', end='')
             print()
         print()
