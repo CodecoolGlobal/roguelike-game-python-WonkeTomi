@@ -1,63 +1,63 @@
 import emoji
 from util import clear_screen, key_pressed
 import time
-# import msvcrt
+import msvcrt
 
 
 def display_room(room):
     pass
 
 
-# def display_intro():
-#     print(''' 
+def display_intro():
+    print(''' 
 
-#                 Welcome to Word of Zsa!
+                Welcome to Word of Zsa!
 
-#              The magical word of randomness
+             The magical word of randomness
 
-#                         made by:
+                        made by:
 
-#                     Zsa - like game    
+                    Zsa - like game    
 
-#         Dávid, Szim Bence, Tomi, Poga, MiMi, Zoty           
+        Dávid, Szim Bence, Tomi, Poga, MiMi, Zoty           
     
-#     ''').center(300)
-#     time.sleep(5)
-#     clear_screen()
+    ''').center(300)
+    time.sleep(5)
+    clear_screen()
 
 
-# def display_menu():
-#     button_pos = 0
-#     while True:
-#         clear_screen()
-#         print('''
-#             ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
-#             ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
-#             ██▪▐█▐▐▌ ▄█▀▄ ▐▀▀▄ ██▪  ▐█· ▐█▌     ▄█▀▄ ██▪     ▄█▀▀▀•▄▀▀▀█▄▄█▀▀█ 
-#             ▐█▌██▐█▌▐█▌.▐▌▐█•█▌▐█▌▐▌██. ██     ▐█▌.▐▌██▌.    █▌▪▄█▀▐█▄▪▐█▐█ ▪▐▌
-#             ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
-#         ''')
-#         if button_pos == 1:
-#             print('                -> New game <-')
-#         else:
-#             print('                   New game  ')
-#         if button_pos == 0:
-#             print('                -> Continue <-')
-#         else:
-#             print('                   Continue  ')
-#         if button_pos == -1:
-#             print("           -> I'm WEAK, so I Quit <-")
-#         else:
-#             print("              I'm WEAK, so I Quit  ")
+def display_menu():
+    button_pos = 0
+    while True:
+        clear_screen()
+        print('''
+            ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
+            ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
+            ██▪▐█▐▐▌ ▄█▀▄ ▐▀▀▄ ██▪  ▐█· ▐█▌     ▄█▀▄ ██▪     ▄█▀▀▀•▄▀▀▀█▄▄█▀▀█ 
+            ▐█▌██▐█▌▐█▌.▐▌▐█•█▌▐█▌▐▌██. ██     ▐█▌.▐▌██▌.    █▌▪▄█▀▐█▄▪▐█▐█ ▪▐▌
+            ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
+        ''')
+        if button_pos == 1:
+            print('                -> New game <-')
+        else:
+            print('                   New game  ')
+        if button_pos == 0:
+            print('                -> Continue <-')
+        else:
+            print('                   Continue  ')
+        if button_pos == -1:
+            print("           -> I'm WEAK, so I Quit <-")
+        else:
+            print("              I'm WEAK, so I Quit  ")
 
-#         if msvcrt.getch().decode('utf-8') == 's':
-#             if button_pos >= 0:
-#                 button_pos -= 1
-#         elif msvcrt.getch().decode('utf-8') == 'w':
-#             if button_pos <= 0:
-#                 button_pos += 1
-#         elif msvcrt.getch().decode('utf-8') == ' ':
-#             return button_pos
+        if msvcrt.getch().decode('utf-8') == 's':
+            if button_pos >= 0:
+                button_pos -= 1
+        elif msvcrt.getch().decode('utf-8') == 'w':
+            if button_pos <= 0:
+                button_pos += 1
+        elif msvcrt.getch().decode('utf-8') == ' ':
+            return button_pos
             
 
 def create_empty_board():
