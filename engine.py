@@ -1,3 +1,8 @@
+list_of_list = [[':evergreen_tree:', ':deciduous_tree:'], ]
+        
+def create_room(emoji_wall, countain_of_room):
+    pass
+
 def create_board(width, height):
     '''
     Creates a new game board based on input parameters.
