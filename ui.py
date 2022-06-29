@@ -25,8 +25,7 @@ def display_intro():
     time.sleep(5)
     clear_screen()
 
-
-def display_menu():
+def display_title():
     clear_screen()
     print('''
         ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
@@ -35,28 +34,30 @@ def display_menu():
         ▐█▌██▐█▌▐█▌.▐▌▐█•█▌▐█▌▐▌██. ██     ▐█▌.▐▌██▌.    █▌▪▄█▀▐█▄▪▐█▐█ ▪▐▌
         ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
     ''')
-        # if button_pos == 1:
-        #     print('                -> New game <-')
-        # else:
-        #     print('                   New game  ')
-        # if button_pos == 0:
-        #     print('                -> Continue <-')
-        # else:
-        #     print('                   Continue  ')
-        # if button_pos == -1:
-        #     print("           -> I'm WEAK, so I Quit <-")
-        # else:
-        #     print("              I'm WEAK, so I Quit  ")
-        # letter = key_pressed()
-        # print(letter)
-        # if letter == 's':
-        #     if button_pos >= 0:
-        #         button_pos -= 1
-        # elif letter == 'w':
-        #     if button_pos <= 0:
-        #         button_pos += 1
-        # elif letter == ' ':
-        #     changeing_menu(button_pos)
+
+def display_menu(buttons):
+    # if button_pos == 1:
+    #     print('                -> New game <-')
+    # else:
+    #     print('                   New game  ')
+    # if button_pos == 0:
+    #     print('                -> Continue <-')
+    # else:
+    #     print('                   Continue  ')
+    # if button_pos == -1:
+    #     print("           -> I'm WEAK, so I Quit <-")
+    # else:
+    #     print("              I'm WEAK, so I Quit  ")
+    # letter = key_pressed()
+    # print(letter)
+    # if letter == 's':
+    #     if button_pos >= 0:
+    #         button_pos -= 1
+    # elif letter == 'w':
+    #     if button_pos <= 0:
+    #         button_pos += 1
+    # elif letter == ' ':
+    #     changeing_menu(button_pos)
 
 
 '''def changeing_menu(button):

@@ -94,7 +94,7 @@ ZOMBIE = {
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_zombie:"),
+    "EMOJI": emoji.emojize(":zombie:"),
     "SOUND": ""}
 
 VAMPIRE = {
@@ -106,7 +106,7 @@ VAMPIRE = {
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_vampire_dark_skin_tone:"),
+    "EMOJI": emoji.emojize(":vampire:"),
     "SOUND": ""}
 
 # BOSSOK
@@ -148,7 +148,7 @@ CODECOOLER_BOSS2 = {
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_technologist:"),
+    "EMOJI": emoji.emojize(":laptop:"),
     "SOUND": ""}
 
 mobs = [CROCODILE, SKUNK, BUTTERFLY, MOSQUITO, ZOMBIE, IT, DODO, VAMPIRE]
