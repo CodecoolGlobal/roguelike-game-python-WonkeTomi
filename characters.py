@@ -4,6 +4,8 @@ import emoji
 main_character = {
     "NAME": "",
     "HP": 200,
+    "ATK": 0,
+    "DEF": 0,
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
@@ -14,10 +16,8 @@ main_character = {
 
 CROCODILE = {
     "HP": 50,
+    "ATK": 0,
     "DEF": 10,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -26,10 +26,8 @@ CROCODILE = {
 
 SKUNK = {
     "HP": 20,
+    "ATK": 0,
     "DEF": 5,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -38,10 +36,8 @@ SKUNK = {
 
 BUTTERFLY = {
     "HP": 20,
+    "ATK": 0,
     "DEF": 1,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -51,10 +47,8 @@ BUTTERFLY = {
 
 IT = {
     "HP": 40,
+    "ATK": 0,
     "DEF": 30,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -63,10 +57,8 @@ IT = {
 
 DODO = {
     "HP": 30,
+    "ATK": 0,
     "DEF": 10,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -75,10 +67,8 @@ DODO = {
 
 MOSQUITO = {
     "HP": 5,
+    "ATK": 0,
     "DEF": 1,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
@@ -87,6 +77,7 @@ MOSQUITO = {
 
 ZOMBIE = {
     "HP": 55,
+    "ATK": 0,
     "DEF": 30,
     "HELMET": 1,
     "CHEST": 0,
@@ -94,29 +85,25 @@ ZOMBIE = {
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_zombie:"),
+    "EMOJI": emoji.emojize(":zombie:"),
     "SOUND": ""}
 
 VAMPIRE = {
     "HP": 150,
+    "ATK": 0,
     "DEF": 50,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_vampire_dark_skin_tone:"),
+    "EMOJI": emoji.emojize(":vampire:"),
     "SOUND": ""}
 
 # BOSSOK
 
 PUTYIN_BOSS = {
     "HP": 2500,
+    "ATK": 0,
     "DEF": 100,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "EXP": 0,
@@ -127,28 +114,24 @@ PUTYIN_BOSS = {
 
 T_REX_BOSS1 = {
     "HP": 2000,
+    "ATK": 0,
     "DEF": 70,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":T-Rex:"), 
+    "EMOJI": emoji.emojize(":T-Rex:"),
     "SOUND": ""}
 
 CODECOOLER_BOSS2 = {
     "HP": 2250,
+    "ATK": 0,
     "DEF": 1000,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
     "HAND": 0,
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
-    "EMOJI": emoji.emojize(":man_technologist:"),
+    "EMOJI": emoji.emojize(":laptop:"),
     "SOUND": ""}
 
 mobs = [CROCODILE, SKUNK, BUTTERFLY, MOSQUITO, ZOMBIE, IT, DODO, VAMPIRE]
