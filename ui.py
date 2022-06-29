@@ -4,11 +4,9 @@ import time
 import engine
 
 
-def display_room(room):
-    pass
-
 def print_error_message(message):
     print(message)
+
 
 def display_intro():
     print(''' 
@@ -29,47 +27,45 @@ def display_intro():
 
 
 def display_menu():
-    button_pos = 0
-    while True:
-        clear_screen()
-        print('''
-            ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
-            ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
-            ██▪▐█▐▐▌ ▄█▀▄ ▐▀▀▄ ██▪  ▐█· ▐█▌     ▄█▀▄ ██▪     ▄█▀▀▀•▄▀▀▀█▄▄█▀▀█ 
-            ▐█▌██▐█▌▐█▌.▐▌▐█•█▌▐█▌▐▌██. ██     ▐█▌.▐▌██▌.    █▌▪▄█▀▐█▄▪▐█▐█ ▪▐▌
-            ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
-        ''')
-        if button_pos == 1:
-            print('                -> New game <-')
-        else:
-            print('                   New game  ')
-        if button_pos == 0:
-            print('                -> Continue <-')
-        else:
-            print('                   Continue  ')
-        if button_pos == -1:
-            print("           -> I'm WEAK, so I Quit <-")
-        else:
-            print("              I'm WEAK, so I Quit  ")
-        letter = key_pressed()
-        print(letter)
-        if letter == 's':
-            if button_pos >= 0:
-                button_pos -= 1
-        elif letter == 'w':
-            if button_pos <= 0:
-                button_pos += 1
-        elif letter == ' ':
-            changeing_menu(button_pos)
+    clear_screen()
+    print('''
+        ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
+        ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
+        ██▪▐█▐▐▌ ▄█▀▄ ▐▀▀▄ ██▪  ▐█· ▐█▌     ▄█▀▄ ██▪     ▄█▀▀▀•▄▀▀▀█▄▄█▀▀█ 
+        ▐█▌██▐█▌▐█▌.▐▌▐█•█▌▐█▌▐▌██. ██     ▐█▌.▐▌██▌.    █▌▪▄█▀▐█▄▪▐█▐█ ▪▐▌
+        ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
+    ''')
+        # if button_pos == 1:
+        #     print('                -> New game <-')
+        # else:
+        #     print('                   New game  ')
+        # if button_pos == 0:
+        #     print('                -> Continue <-')
+        # else:
+        #     print('                   Continue  ')
+        # if button_pos == -1:
+        #     print("           -> I'm WEAK, so I Quit <-")
+        # else:
+        #     print("              I'm WEAK, so I Quit  ")
+        # letter = key_pressed()
+        # print(letter)
+        # if letter == 's':
+        #     if button_pos >= 0:
+        #         button_pos -= 1
+        # elif letter == 'w':
+        #     if button_pos <= 0:
+        #         button_pos += 1
+        # elif letter == ' ':
+        #     changeing_menu(button_pos)
 
 
-def changeing_menu(button):
+'''def changeing_menu(button):
     if button == 1:
         create_new_player()
     elif button == 0:
         load_player()
     elif button == -1:
-        quit()
+        quit()'''
 
 def display_board(board):
     '''
