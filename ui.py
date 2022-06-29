@@ -63,7 +63,7 @@ def print_menu():
         buttons = ui.create_button(ui.MENU_BUTTONS, pos)
         ui.display_button(buttons)
         pos = ui.change_button_pos(pos, buttons)
-        
+
 
 def change_button_pos(pos, buttons):
     key = key_pressed()
@@ -83,6 +83,19 @@ def change_menu(button):
         print_error_message("Not implemented yet")
     elif button == 2:
         quit()
+
+    '''def changeing_menu(button):
+    if button == 1:
+        create_new_player()
+    elif button == 0:
+        load_player()
+    elif button == -1:
+        quit()'''
+
+def print_info():
+    print()
+    print('--- Press WSAD to move ---')
+    print('--- Press ESC to quit! ---')
 
 
 def display_board(board):
@@ -111,6 +124,8 @@ def display_board(board):
                 print('  ', end='')
             print()
         print()
+
+    print_info()
 
 
 if __name__ == '__main__':
