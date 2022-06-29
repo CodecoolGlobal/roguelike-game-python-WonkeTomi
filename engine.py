@@ -10,7 +10,7 @@ from util import key_pressed
 
 NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':Christmas_tree:', ':baby_bottle:', ':magic_wand:']]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:" ,":dodo:", ":mosquito:", ":man_zombie:"]]
+MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
 BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
