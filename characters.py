@@ -1,17 +1,15 @@
 import emoji
 
-main_character = {
-    "HP": 200,
-    "MANA": 100,
-    "HELMET": 0,
-    "CHEST": 0,
-    "BOOTS": 0,
-    "HAND": 0,
-    "EXP": 0,
-    "LVL": 1,
-    "BAG": [],
-    "EMOJI": emoji.emojize(":baby:"),
-    "DEF": 0}
+def create_char(name):
+    main_character = {
+        "NAME": name,
+        "HP": 200,
+        "MANA": 100,
+        "EXP": 0,
+        "LVL": 1,
+        "BAG": [],
+        "EMOJI": emoji.emojize(":baby:")}
+    return main_character
 # MOBOK
 
 CROCODILE = {
