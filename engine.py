@@ -1,22 +1,26 @@
 import random
+from xml.dom.pulldom import CHARACTERS
 import emoji
 import characters
 import os
 import ui
+import characters
 
 from util import key_pressed
 
 NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':Christmas_tree:', ':baby_bottle:', ':magic_wand:']]
-SPECIAL_EVENTS= [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOB_WALL = [':rock:', ':zany_face:']
-BOSS_WALL = [':fire:', ':skull:', ':fearful_face:']
+SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
+MOBS = [[':rock:', ':zany_face:'], [":man_vampire_dark_skin_tone:", ":crocodile:" ":skunk:", ":butterfly:", ":clown_face:" ,":dodo:", ":mosquito:", ":man_zombie:"]]
+BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":man_technologist:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
+FLOOR = ':black_large_square:'
+DOOR = ':door:'
 
 
-def create_room(wall_elements, countain_of_room = ':black_large_square:', door = ':door:'):
+def create_room(wall_elements, countain_of_room=FLOOR, door=DOOR):
     first_last_row = [wall_elements, wall_elements, door, wall_elements, wall_elements]
-    second_forth_row = [wall_elements, ':black_large_square:', ':black_large_square:', ':black_large_square:', wall_elements]
-    third_row = [door, ':black_large_square:', countain_of_room, ':black_large_square:', door]
+    second_forth_row = [wall_elements, FLOOR, FLOOR, FLOOR, wall_elements]
+    third_row = [door, FLOOR, countain_of_room, FLOOR, door]
     whole_room = []
     whole_room.append(first_last_row)
     for i in range(3):
@@ -26,6 +30,7 @@ def create_room(wall_elements, countain_of_room = ':black_large_square:', door =
             whole_room.append(second_forth_row)
     whole_room.append(first_last_row)
     return whole_room
+
 
 def create_board(width=4, height=4):
     '''
@@ -46,9 +51,9 @@ def create_board(width=4, height=4):
         random_special = random.choice(SPECIAL_EVENTS)
         room.append(create_room(random_special[0], random_special[1]))
     for mobs in range(2):
-        room.append(create_room(random.choice(MOB_WALL), countain_of_room=emoji.emojize(':nazar_amulet:')))
-    room.append(create_room(random.choice(BOSS_WALL), countain_of_room=emoji.emojize(random)))
-    room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=emoji.emojize(':baby:')))
+        room.append(create_room(random.choice(MOBS[0]), countain_of_room=random.choice(MOBS[1])))
+    room.append(create_room(random.choice(BOSS[0]), countain_of_room=random.choice(BOSS[1])))
+    room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=characters.main_character["EMOJI"]))
     actual_room_count = len(room)
     while full_room_count > actual_room_count:
         room.append(create_room(random.choice(EMPTY_ROOM)))
@@ -89,6 +94,18 @@ def character_movement(board):
     control_key = key_pressed
 
 
+
+'''def create_new_player():
+    valid_name = False
+    while not valid_name:
+        player_name = "./player/"
+        player_name += input(" Please give me your character name: ")
+        player_name += ".txt"
+        if os.path.exists(player_name):
+            ui.print_error_message("Player name is already taken choose another one!")
+        else:
+            with open(player_name,'w') as file:
+                file.write('''
 
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
