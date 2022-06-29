@@ -7,6 +7,8 @@ import time
 def display_room(room):
     pass
 
+def print_error_message(message):
+    print(message)
 
 def display_intro():
     print(''' 
@@ -58,21 +60,16 @@ def display_menu():
             if button_pos <= 0:
                 button_pos += 1
         elif letter == ' ':
-            return button_pos
-            
+            changeing_menu(button_pos)
 
-def create_empty_board():
-    board = []
-    for i in range(16):
-        room = []
-        for n in range(5):
-            room_line = []
-            for y in range(5):
-                room_line.append('w')
-            room.append(room_line)
-        board.append(room)
-    return board
 
+def changeing_menu(button):
+    if button == 1:
+        create_new_player()
+    elif button == 0:
+        load_player()
+    elif button == -1:
+        quit()
 
 def display_board(board):
     '''

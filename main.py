@@ -8,4 +8,4 @@ def main():
     pass
 
 if __name__ == '__main__':
-    print(ui.display_menu())
+    print(engine.create_board())
