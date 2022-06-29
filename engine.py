@@ -3,17 +3,17 @@ import emoji
 import os
 import ui
 
-NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':shield:', ':baby_bottle:', ':magic_wand:']]
-SPECIAL_EVENTS= [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':derelict_house:', ':child:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing', ':banana:'], [':skull_and_crossbones:', ':game_die:'], [':national_park:', ':zebra:'], [':wood:', ':onion:'], [':warning:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
+NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':Christmas_tree:', ':baby_bottle:', ':magic_wand:']]
+SPECIAL_EVENTS= [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
 MOB_WALL = [':rock:', ':zany_face:']
 BOSS_WALL = [':fire:', ':skull:', ':fearful_face:']
-EMPTY_ROOM = [':butter:', ':fuel_pump:', ':yin_yang:']
+EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 
 
-def create_room(wall_elements, countain_of_room=' ', door=':door:'):
+def create_room(wall_elements, countain_of_room = ':black_large_square:', door = ':door:'):
     first_last_row = [wall_elements, wall_elements, door, wall_elements, wall_elements]
-    second_forth_row = [wall_elements, ' ', ' ', ' ', wall_elements]
-    third_row = [door, ' ', countain_of_room, ' ', door]
+    second_forth_row = [wall_elements, ':black_large_square:', ':black_large_square:', ':black_large_square:', wall_elements]
+    third_row = [door, ':black_large_square:', countain_of_room, ':black_large_square:', door]
     whole_room = []
     whole_room.append(first_last_row)
     for i in range(3):
@@ -101,3 +101,4 @@ if __name__ == "__main__":
         for line in room:
             print(*line)
         print()
+        
