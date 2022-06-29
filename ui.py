@@ -98,9 +98,7 @@ def change_menu(button):
         quit()'''
 
 def print_info():
-    print()
-    print('--- Press WSAD to move ---')
-    print('--- Press ESC to quit! ---')
+    print('\n--> Press WSAD to move <--   --> Press ESC to quit <--')
 
 
 def display_board(board):

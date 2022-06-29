@@ -1,13 +1,12 @@
-import random
-from xml.dom.pulldom import CHARACTERS
-import characters
+#Our own modules
 import ui
-import characters
-import time
 import sounds
 import events
+import characters
 
+import random
 from util import key_pressed
+
 
 ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:':'H20', ':Christmas_tree:':'A3', ':baby_bottle:':'H10', ':magic_wand:':'A20', ':dagger:':'A10', 'crossed_swords':'A20', 'water_pistol':'A5', ':bomb:': 'A23', ':shield:':'D30', ':blue_square:':'D5'}
 NORMAL_ITEMS = [':brick:', list(ITEMS_DICT)]
@@ -71,7 +70,7 @@ def create_board(width=4, height=4):
         room.append(create_room(random.choice(EMPTY_ROOM)))
         actual_room_count = actual_room_count + 1
         random.shuffle(room)
-    
+
     # Remove outer doors (by MiMi)
     for i in range(4):
         room[i][0][2] = room[i][0][1]
@@ -90,7 +89,6 @@ def put_player_on_board(board, room, placement):
 def is_in_the_board(old_room, new_room):
     new_room_x = new_room // ROOM_COLUMNS_COUNT
     old_room_x = old_room // ROOM_COLUMNS_COUNT
-    room_y = new_room % ROOM_ROWS_COUNT
     if (new_room_x+1 > ROOM_COLUMNS_COUNT) or (new_room_x < 0):
         return False
     elif (new_room_x != old_room_x):
@@ -123,6 +121,7 @@ def search_and_clear_player(board, clear_player):
 
 def get_room(board, room_index):
     return board[room_index]
+
 
 def character_movement(board):
     sounds.playsound_background_music()
@@ -174,9 +173,9 @@ def character_movement(board):
             with open(player_name,'w') as file:
                 file.write('''
 
+
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
     #     print(create_room('#', countain_of_room='8')[i])
-    
+
     character_movement(create_board())
-        
