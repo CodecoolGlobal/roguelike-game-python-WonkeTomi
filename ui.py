@@ -4,9 +4,14 @@ from util import clear_screen, key_pressed
 import time
 import engine
 import ui
+from os import system
 
 
 MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
+
+
+def clear_screen():
+    system('clear')
 
 
 def print_error_message(message):
@@ -110,6 +115,8 @@ def display_board(board):
     NUMBER_OF_ROWS_IN_A_ROOM = 5
     NUMBER_OF_ROOMS_IN_A_ROW = 4
     NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM = 5
+
+    clear_screen()
 
     for room_row in range(NUMBER_OF_ROWS_OF_ROOMS):
         for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):

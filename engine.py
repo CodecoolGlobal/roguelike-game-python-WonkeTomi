@@ -83,7 +83,7 @@ def create_board(width=4, height=4):
 def put_player_on_board(board, room, placement):
     # Modifies the game board by placing the player icon at its coordinates.
     board[room][placement[0]][placement[1]] = PLAYER_ICON
-    playsound_open_door()
+    sounds.playsound_next_room()
 
 
 def is_in_the_board(old_room, new_room):
@@ -120,23 +120,8 @@ def search_and_clear_player(board, clear_player):
                         return current_room, room_lines, room_cells
 
 
-def playsound_open_door():
-            sounds.init_music_player()
-            sounds.load_sound('door_open_4.wav')
-            sounds.play_sound()
-            time.sleep(0.7)
-            sounds.stop_sound()
-
-
-def playsound_error():
-            sounds.init_music_player()
-            sounds.load_sound('error_1.wav')
-            sounds.play_sound()
-            time.sleep(0.3)
-            sounds.stop_sound()
-
-
 def character_movement(board):
+    sounds.playsound_background_music()
     ESC = chr(27)
 
     game_over = False
@@ -151,25 +136,25 @@ def character_movement(board):
                 search_and_clear_player(board, True)    
                 put_player_on_board(board, current_room-4, BOTTOM)
             else:
-                playsound_error()
+                sounds.playsound_error()
         elif control_key == 's':
             if is_in_the_board(current_room+4, current_room+4):
                 search_and_clear_player(board, True)    
                 put_player_on_board(board, current_room+4, TOP)
             else:
-                playsound_error()
+                sounds.playsound_error()
         elif control_key == 'a':
             if is_in_the_board(current_room, current_room-1):
                 search_and_clear_player(board, True)    
                 put_player_on_board(board, current_room-1, RIGHT)
             else:
-                playsound_error()
+                sounds.playsound_error()
         elif control_key == 'd':
             if is_in_the_board(current_room, current_room+1):
                 search_and_clear_player(board, True)    
                 put_player_on_board(board, current_room+1, LEFT)
             else:
-                playsound_error()
+                sounds.playsound_error()
 
 
 '''def create_new_player():
