@@ -1,7 +1,7 @@
 import emoji
 from util import clear_screen, key_pressed
 import time
-import msvcrt
+
 
 
 def display_room(room):
