@@ -1,11 +1,12 @@
 import random
-from tkinter import BOTTOM
 from xml.dom.pulldom import CHARACTERS
 import emoji
 import characters
 import os
 import ui
 import characters
+import time
+import copy
 
 from util import key_pressed
 
@@ -17,10 +18,10 @@ EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
 DOOR = ':door:'
 
-TOP = (1,2)
-BOTTOM = (3,2)
-LEFT = (2,1)
-RIGHT = (2,3)
+TOP = (1, 2)
+BOTTOM = (3, 2)
+LEFT = (2, 1)
+RIGHT = (2, 3)
 PLAYER_ICON = characters.main_character['EMOJI']
 
 
@@ -29,13 +30,13 @@ def create_room(wall_elements, countain_of_room=FLOOR, door=DOOR):
     second_forth_row = [wall_elements, FLOOR, FLOOR, FLOOR, wall_elements]
     third_row = [door, FLOOR, countain_of_room, FLOOR, door]
     whole_room = []
-    whole_room.append(first_last_row)
+    whole_room.append(first_last_row.copy())
     for i in range(3):
         if i == 1:
-            whole_room.append(third_row)
+            whole_room.append(third_row.copy())
         else:
-            whole_room.append(second_forth_row)
-    whole_room.append(first_last_row)
+            whole_room.append(second_forth_row.copy())
+    whole_room.append(first_last_row.copy())
     return whole_room
 
 
@@ -66,6 +67,7 @@ def create_board(width=4, height=4):
         room.append(create_room(random.choice(EMPTY_ROOM)))
         actual_room_count = actual_room_count + 1
         random.shuffle(room)
+    
     return room
 
 
@@ -74,7 +76,7 @@ def put_player_on_board(board, room, placement):
     board[room][placement[0]][placement[1]] = PLAYER_ICON
     
 
-def search_and_clear_player(board):
+def search_and_clear_player(board, clear_player):
     NUMBER_OF_ROWS_OF_ROOMS = 4
     NUMBER_OF_ROWS_IN_A_ROOM = 5
     NUMBER_OF_ROOMS_IN_A_ROW = 4
@@ -87,27 +89,31 @@ def search_and_clear_player(board):
                     current_room = (room_row*4)+room
                     cell_to_check = board[current_room][room_lines][room_cells]
                     if cell_to_check == PLAYER_ICON:
-                        board[current_room][room_lines][room_cells] = FLOOR
+                        if clear_player:
+                            board[current_room][room_lines][room_cells] = FLOOR
                         return current_room
 
 
 def character_movement(board):
     ESC = chr(27)
 
-    current_room = search_and_clear_player(board)
+    current_room = search_and_clear_player(board, False)
     game_over = False
     while not game_over:
         ui.display_board(board)
+        # time.sleep(30)
         control_key = key_pressed()
         if control_key == ESC:
             game_over = True
         elif control_key == 'w':
+            search_and_clear_player(board, True)
             put_player_on_board(board, current_room-4, BOTTOM)
-
         elif control_key == 's':
-            pass
+            search_and_clear_player(board, True)
+            put_player_on_board(board, current_room+4, BOTTOM)        
         elif control_key == 'a':
-            pass
+            search_and_clear_player(board, True)
+            put_player_on_board(board, current_room-1, RIGHT)
         elif control_key == 'd':
             pass
 
@@ -128,6 +134,5 @@ if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
     #     print(create_room('#', countain_of_room='8')[i])
     
-    board = create_board()
-    character_movement(board)
+    character_movement(create_board())
         
