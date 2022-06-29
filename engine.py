@@ -1,4 +1,5 @@
 import random
+from tkinter import BOTTOM
 from xml.dom.pulldom import CHARACTERS
 import emoji
 import characters
@@ -10,11 +11,17 @@ from util import key_pressed
 
 NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':Christmas_tree:', ':baby_bottle:', ':magic_wand:']]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:" ,":dodo:", ":mosquito:", ":man_zombie:"]]
+MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:" ,":dodo:", ":mosquito:", ":zombie:"]]
 BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
 DOOR = ':door:'
+
+TOP = (1,2)
+BOTTOM = (3,2)
+LEFT = (2,1)
+RIGHT = (2,3)
+PLAYER_ICON = characters.main_character['EMOJI']
 
 
 def create_room(wall_elements, countain_of_room=FLOOR, door=DOOR):
@@ -62,20 +69,12 @@ def create_board(width=4, height=4):
     return room
 
 
-def put_player_on_board(board, player):
-    '''
-    Modifies the game board by placing the player icon at its coordinates.
+def put_player_on_board(board, room, placement):
+    # Modifies the game board by placing the player icon at its coordinates.
+    board[room][placement[0]][placement[1]] = PLAYER_ICON
+    
 
-    Args:
-    list: The game board
-    dictionary: The player information containing the icon and coordinates
-
-    Returns:
-    Nothing
-    '''
-    pass
-
-def search_for_player(board):
+def search_and_clear_player(board):
     NUMBER_OF_ROWS_OF_ROOMS = 4
     NUMBER_OF_ROWS_IN_A_ROOM = 5
     NUMBER_OF_ROOMS_IN_A_ROW = 4
@@ -87,13 +86,30 @@ def search_for_player(board):
                 for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
                     current_room = (room_row*4)+room
                     cell_to_check = board[current_room][room_lines][room_cells]
-                    if cell_to_check == characters.main_character('EMOJI'):
+                    if cell_to_check == PLAYER_ICON:
+                        board[current_room][room_lines][room_cells] = FLOOR
                         return current_room
 
 
 def character_movement(board):
-    control_key = key_pressed
+    ESC = chr(27)
 
+    current_room = search_and_clear_player(board)
+    game_over = False
+    while not game_over:
+        ui.display_board(board)
+        control_key = key_pressed()
+        if control_key == ESC:
+            game_over = True
+        elif control_key == 'w':
+            put_player_on_board(board, current_room-4, BOTTOM)
+
+        elif control_key == 's':
+            pass
+        elif control_key == 'a':
+            pass
+        elif control_key == 'd':
+            pass
 
 
 '''def create_new_player():
@@ -111,9 +127,7 @@ def character_movement(board):
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
     #     print(create_room('#', countain_of_room='8')[i])
+    
     board = create_board()
-    for room in board:
-        for line in room:
-            print(*line)
-        print()
+    character_movement(board)
         

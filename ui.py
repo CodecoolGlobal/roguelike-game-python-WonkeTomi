@@ -60,13 +60,19 @@ def display_menu(buttons):
     #     changeing_menu(button_pos)
 
 
-'''def changeing_menu(button):
+    '''def changeing_menu(button):
     if button == 1:
         create_new_player()
     elif button == 0:
         load_player()
     elif button == -1:
         quit()'''
+
+def print_info():
+    print()
+    print('--- Press WSAD to move ---')
+    print('--- Press ESC to quit! ---')
+
 
 def display_board(board):
     '''
@@ -94,6 +100,8 @@ def display_board(board):
                 print('  ', end='')
             print()
         print()
+
+    print_info()
 
 
 if __name__ == '__main__':
