@@ -10,8 +10,9 @@ def check_item(item):
     pass
 
 
-def event_item(item, message):
-    pass
+def event_item(item, message='You found an item.'):
+    characters.main_character["BAG"].update(item)
+    return characters.main_character
 
 
 def event_fight(character, enemy):
@@ -45,3 +46,5 @@ if __name__ == "__main__":
     #characters.CROCODILE["HP"] = 0
     print(event_win(characters.main_character, characters.CROCODILE))
     print(event_die(characters.main_character, characters.CROCODILE))
+    event_item({':dagger:':'A10'})
+    print(characters.main_character["BAG"])

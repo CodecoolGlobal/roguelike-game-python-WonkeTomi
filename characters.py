@@ -9,7 +9,7 @@ main_character = {
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
-    "BAG": [],
+    "BAG": {},
     "EMOJI": emoji.emojize(":baby:")}
 
 # MOBOK
