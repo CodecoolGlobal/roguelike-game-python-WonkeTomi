@@ -1,8 +1,10 @@
 import pygame
 
+
 def init_music_player():
     pygame.init()
     pygame.mixer.init()
+
 
 def play_sound():
     pygame.mixer.music.play(-1)
