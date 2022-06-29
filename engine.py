@@ -1,5 +1,7 @@
 import random
 import emoji
+import os
+import ui
 
 from util import key_pressed
 
@@ -44,7 +46,7 @@ def create_board(width=4, height=4):
         room.append(create_room(random_special[0], random_special[1]))
     for mobs in range(2):
         room.append(create_room(random.choice(MOB_WALL), countain_of_room=emoji.emojize(':nazar_amulet:')))
-    room.append(create_room(random.choice(BOSS_WALL), countain_of_room=emoji.emojize(':bikini:')))
+    room.append(create_room(random.choice(BOSS_WALL), countain_of_room=emoji.emojize(random)))
     room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=emoji.emojize(':baby:')))
     actual_room_count = len(room)
     while full_room_count > actual_room_count:
