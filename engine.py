@@ -1,5 +1,6 @@
 import random
 import emoji
+import characters
 import os
 import ui
 
@@ -68,9 +69,7 @@ def put_player_on_board(board, player):
     '''
     pass
 
-
-def character_movement(board):
-    control_key = key_pressed
+def search_for_player(board):
     NUMBER_OF_ROWS_OF_ROOMS = 4
     NUMBER_OF_ROWS_IN_A_ROOM = 5
     NUMBER_OF_ROOMS_IN_A_ROW = 4
@@ -82,10 +81,13 @@ def character_movement(board):
                 for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
                     current_room = (room_row*4)+room
                     cell_to_check = board[current_room][room_lines][room_cells]
-                    if cell_to_check == 
-                print('  ', end='')
-            print()
-        print()
+                    if cell_to_check == characters.main_character('EMOJI'):
+                        return current_room
+
+
+def character_movement(board):
+    control_key = key_pressed
+
 
 
 if __name__ == "__main__":
