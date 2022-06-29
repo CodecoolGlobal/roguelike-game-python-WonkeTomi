@@ -19,7 +19,7 @@ def display_intro():
 
                     Zsa - like game    
 
-        Dávid, Szim Bence, Tomi, Poga, MiMi, Zoty           
+        Dávid, SzimBensze, Tomi, Poga, MiMi, Zoty           
     
     ''').center(300)
     time.sleep(5)
