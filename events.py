@@ -1,13 +1,33 @@
 import characters
+import engine
 import emoji
 
 
-def check_event(item_type):
-    pass
+def check_event(room):
+    room_item = room[2][2]
+    if room_item in engine.ITEMS_DICT.keys():
+        event_item({room_item: engine.ITEMS_DICT[room_item]})
+    elif room_item in engine.MOBS[1]:
+        event_fight(characters.main_character, engine.MOBS[room_item])
+    elif room_item in engine.SPECIAL_EVENTS:
+        pass
+    else:
+        return f"This is an empty room."
 
 
-def check_item(item):
-    pass
+def check_item(character):
+    for key, value in character["BAG"].items():
+        item_type = value[0]
+        item_value = int(value[1:])
+        if item_type == "A":
+            character["ATK"] += item_value
+        if item_type == "D":
+            character["DEF"] += item_value
+        if item_type == "H":
+            character["HP"] += item_value
+        if item_type == "M":
+            pass
+    return character
 
 
 def event_item(item, message='You found an item.'):
@@ -47,4 +67,7 @@ if __name__ == "__main__":
     print(event_win(characters.main_character, characters.CROCODILE))
     print(event_die(characters.main_character, characters.CROCODILE))
     event_item({':dagger:':'A10'})
+    event_item({':baby_bottle:':'H10'})
     print(characters.main_character["BAG"])
+    check_item(characters.main_character)
+    print(characters.main_character)
