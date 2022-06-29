@@ -20,7 +20,7 @@ def load_sound(sound_file_name):
 
 def playsound_background_music():
     init_music_player()
-    sound1 = pygame.mixer.Sound("normal_background_music.wav")
+    sound1 = pygame.mixer.Sound("Willow_Escape.wav")
     pygame.mixer.find_channel().play(sound1)
 
 
