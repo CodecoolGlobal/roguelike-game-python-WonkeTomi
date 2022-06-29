@@ -1,7 +1,7 @@
 import emoji
 from util import clear_screen, key_pressed
 import time
-import msvcrt
+import engine
 
 
 def display_room(room):
@@ -95,11 +95,12 @@ def display_board(board):
                     if len(cell_to_print) == 1:
                         print(cell_to_print, end='')
                     else:
-                        print(emoji.emojize(cell_to_print))
+                        print(emoji.emojize(cell_to_print), end='')
                 print('  ', end='')
             print()
         print()
 
 
 if __name__ == '__main__':
-    display_board(create_empty_board())
+    board = engine.create_board()
+    display_board(board)
