@@ -5,6 +5,7 @@ import ui
 import characters
 import time
 import sounds
+import events
 
 from util import key_pressed
 
@@ -120,6 +121,9 @@ def search_and_clear_player(board, clear_player):
                         return current_room, room_lines, room_cells
 
 
+def get_room(board, room_index):
+    return board[room_index]
+
 def character_movement(board):
     sounds.playsound_background_music()
     ESC = chr(27)
@@ -128,6 +132,7 @@ def character_movement(board):
     while not game_over:
         ui.display_board(board)
         current_room, current_line, current_cell = search_and_clear_player(board, False)
+        events.check_event(get_room(board, current_room))
         control_key = key_pressed()
         if control_key == ESC:
             game_over = True
