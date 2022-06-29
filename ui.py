@@ -49,14 +49,15 @@ def display_menu():
             print("           -> I'm WEAK, so I Quit <-")
         else:
             print("              I'm WEAK, so I Quit  ")
-
-        if msvcrt.getch().decode('utf-8') == 's':
+        letter = key_pressed()
+        print(letter)
+        if letter == 's':
             if button_pos >= 0:
                 button_pos -= 1
-        elif msvcrt.getch().decode('utf-8') == 'w':
+        elif letter == 'w':
             if button_pos <= 0:
                 button_pos += 1
-        elif msvcrt.getch().decode('utf-8') == ' ':
+        elif letter == ' ':
             return button_pos
             
 
