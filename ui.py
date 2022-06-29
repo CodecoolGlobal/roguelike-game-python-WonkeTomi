@@ -1,11 +1,16 @@
+from copy import copy
 import emoji
 from util import clear_screen, key_pressed
 import time
 import engine
+import ui
+
+
+MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
 
 
 def print_error_message(message):
-    print(message)
+    print("ERROR: {message}")
 
 
 def display_intro():
@@ -21,12 +26,13 @@ def display_intro():
 
         Dávid, SzimBensze, Tomi, Poga, MiMi, Zoty           
     
-    ''').center(300)
+    ''')
     time.sleep(5)
     clear_screen()
 
+
 def display_title():
-    clear_screen()
+    
     print('''
         ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
         ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
@@ -35,38 +41,62 @@ def display_title():
         ▀▀▀▀ ▀▪ ▀█▄▀▪.▀  ▀.▀▀▀ ▀▀▀▀▀•      ▀█▄▀▪▀▀▀     ·▀▀▀ • ▀▀▀▀  ▀  ▀ 
     ''')
 
-def display_menu(buttons):
-    # if button_pos == 1:
-    #     print('                -> New game <-')
-    # else:
-    #     print('                   New game  ')
-    # if button_pos == 0:
-    #     print('                -> Continue <-')
-    # else:
-    #     print('                   Continue  ')
-    # if button_pos == -1:
-    #     print("           -> I'm WEAK, so I Quit <-")
-    # else:
-    #     print("              I'm WEAK, so I Quit  ")
-    # letter = key_pressed()
-    # print(letter)
-    # if letter == 's':
-    #     if button_pos >= 0:
-    #         button_pos -= 1
-    # elif letter == 'w':
-    #     if button_pos <= 0:
-    #         button_pos += 1
-    # elif letter == ' ':
-    #     changeing_menu(button_pos)
+
+def display_button(buttons):
+    for button in buttons:
+        print(f"\n {button.center(80)}")
 
 
-'''def changeing_menu(button):
+def create_button(buttons, pos):
+    symbol_right = ' <-'
+    symbol_left = '-> '
+    buttons_to_create = copy(buttons)
+    buttons_to_create[pos] = symbol_left + buttons_to_create[pos] + symbol_right
+    return buttons_to_create
+
+
+def print_menu():
+    pos = 0
+    while True:
+        clear_screen()
+        ui.display_title()
+        buttons = ui.create_button(ui.MENU_BUTTONS, pos)
+        ui.display_button(buttons)
+        pos = ui.change_button_pos(pos, buttons)
+
+
+def change_button_pos(pos, buttons):
+    key = key_pressed()
+    if key == 's':
+        if pos < len(buttons) - 1:
+            pos += 1
+    elif key == 'w':
+        if pos > 0:
+            pos -= 1
+    return pos
+
+
+def change_menu(button):
+    if button == 0:
+        print("yep")
+    elif button == 1:
+        print_error_message("Not implemented yet")
+    elif button == 2:
+        quit()
+
+    '''def changeing_menu(button):
     if button == 1:
         create_new_player()
     elif button == 0:
         load_player()
     elif button == -1:
         quit()'''
+
+def print_info():
+    print()
+    print('--- Press WSAD to move ---')
+    print('--- Press ESC to quit! ---')
+
 
 def display_board(board):
     '''
@@ -94,6 +124,8 @@ def display_board(board):
                 print('  ', end='')
             print()
         print()
+
+    print_info()
 
 
 if __name__ == '__main__':
