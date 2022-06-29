@@ -1,6 +1,8 @@
 import random
 import emoji
 
+from util import key_pressed
+
 NORMAL_ITEMS = [':brick:', [':anatomical_heart:', ':Christmas_tree:', ':baby_bottle:', ':magic_wand:']]
 SPECIAL_EVENTS= [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
 MOB_WALL = [':rock:', ':zany_face:']
@@ -43,7 +45,7 @@ def create_board(width=4, height=4):
     for mobs in range(2):
         room.append(create_room(random.choice(MOB_WALL), countain_of_room=emoji.emojize(':nazar_amulet:')))
     room.append(create_room(random.choice(BOSS_WALL), countain_of_room=emoji.emojize(':bikini:')))
-    room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=emoji.emojize(':tongue:')))
+    room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=emoji.emojize(':baby:')))
     actual_room_count = len(room)
     while full_room_count > actual_room_count:
         room.append(create_room(random.choice(EMPTY_ROOM)))
@@ -63,6 +65,26 @@ def put_player_on_board(board, player):
     Nothing
     '''
     pass
+
+
+def character_movement(board):
+    control_key = key_pressed
+    NUMBER_OF_ROWS_OF_ROOMS = 4
+    NUMBER_OF_ROWS_IN_A_ROOM = 5
+    NUMBER_OF_ROOMS_IN_A_ROW = 4
+    NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM = 5
+
+    for room_row in range(NUMBER_OF_ROWS_OF_ROOMS):
+        for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
+            for room in range(NUMBER_OF_ROOMS_IN_A_ROW):
+                for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
+                    current_room = (room_row*4)+room
+                    cell_to_check = board[current_room][room_lines][room_cells]
+                    if cell_to_check == 
+                print('  ', end='')
+            print()
+        print()
+
 
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
