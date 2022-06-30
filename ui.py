@@ -6,7 +6,6 @@ import emoji
 from util import clear_screen, key_pressed
 import time
 import engine
-import ui
 from os import system
 import os
 
@@ -98,8 +97,8 @@ def print_menu():
     pos = 0
     while True:
         clear_screen()
-        ui.display_title()
-        pos = button_system(ui.MENU_BUTTONS, pos, change_main_menu)
+        display_title()
+        pos = button_system(MENU_BUTTONS, pos, change_main_menu)
 
 
 def print_info():
