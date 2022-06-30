@@ -67,8 +67,8 @@ def event_die(character, enemy):
 
 if __name__ == "__main__":
     #characters.CROCODILE["HP"] = 0
-    print(event_win(characters.main_character, characters.CROCODILE))
-    print(event_die(characters.main_character, characters.CROCODILE))
+    print(event_win(characters.main_character, characters.SKUNK))
+    print(event_die(characters.main_character, characters.SKUNK))
     event_item({':dagger:':'A10'})
     event_item({':baby_bottle:':'H10'})
     print(characters.main_character["BAG"])
