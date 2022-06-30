@@ -20,22 +20,23 @@ MIDDLE_FINGER2 = "You have just found a jerk with it's middle finger up and he k
 MUSHROOM = "You have found a death cap mushroom and you are hungry. Do you eat it or not?"
 POSSIBILITIES = {':evergreen_tree:': ["This peach is rotten inside and infested with worms.", "It was really tasty.", EAT_PEACH]
 }
-
+ablak = [POSSIBILITIES]
 
 def choose_special(special):
     outcome = random.randint(0, 1)
     event_index = 2
     on_goings = []
-    for event in POSSIBILITIES:
-        if special[2][2] in event.keys():
-            on_goings.append(event[special[2][2]][event_index])
+    for event in POSSIBILITIES.keys():
+        if special[2][2] in event:
+            on_goings.append(POSSIBILITIES[event][event_index])
             on_goings.append(FACTOR[outcome])
-            on_goings.append(event[special[2][2]][outcome])
+            on_goings.append(POSSIBILITIES[event][outcome])
             on_goings.append(OUTCOME[outcome])
             if outcome == 0:
                 characters.main_character["HP"] -= 20
             else:
                 characters.main_character["HP"] += 20
+    ui.print_message(on_goings)
 
 
 if __name__ == "__main__":
