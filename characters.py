@@ -4,8 +4,8 @@ import emoji
 main_character = {
     "NAME": "",
     "HP": 200,
-    "ATK": 0,
-    "DEF": 0,
+    "ATK": 10,
+    "DEF": 10,
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
@@ -16,27 +16,27 @@ main_character = {
 
 CROCODILE = {
     "HP": 50,
-    "ATK": 0,
+    "ATK": 10,
     "DEF": 10,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 5,
     "LVL": 1,
     "EMOJI": emoji.emojize(":crocodile:"),
     "SOUND": ""}
 
 SKUNK = {
     "HP": 20,
-    "ATK": 0,
+    "ATK": 5,
     "DEF": 5,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 0,
     "LVL": 1,
     "EMOJI": emoji.emojize(":skunk:"),
     "SOUND": ""}
 
 BUTTERFLY = {
     "HP": 20,
-    "ATK": 0,
+    "ATK": 20,
     "DEF": 1,
     "HAND": 0,
     "MANA": 100,
@@ -47,20 +47,20 @@ BUTTERFLY = {
 
 IT = {
     "HP": 40,
-    "ATK": 0,
+    "ATK": 50,
     "DEF": 30,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 150,
     "LVL": 1,
     "EMOJI": emoji.emojize(":clown_face:"),
     "SOUND": ""}
 
 DODO = {
     "HP": 30,
-    "ATK": 0,
+    "ATK": 20,
     "DEF": 10,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 10,
     "LVL": 1,
     "EMOJI": emoji.emojize(":dodo:"),
     "SOUND": ""}
@@ -70,7 +70,7 @@ MOSQUITO = {
     "ATK": 0,
     "DEF": 1,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 0,
     "LVL": 1,
     "EMOJI": emoji.emojize(":mosquito:"),
     "SOUND": ""}
@@ -83,7 +83,7 @@ ZOMBIE = {
     "CHEST": 0,
     "BOOTS": 0,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 20,
     "LVL": 1,
     "EMOJI": emoji.emojize(":zombie:"),
     "SOUND": ""}
@@ -93,7 +93,7 @@ VAMPIRE = {
     "ATK": 0,
     "DEF": 50,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 150,
     "LVL": 1,
     "EMOJI": emoji.emojize(":vampire:"),
     "SOUND": ""}
@@ -102,10 +102,10 @@ VAMPIRE = {
 
 PUTYIN_BOSS = {
     "HP": 2500,
-    "ATK": 0,
+    "ATK": 70,
     "DEF": 100,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 300,
     "EXP": 0,
     "LVL": 1,
     "EMOJI": emoji.emojize(":Russia:"),
@@ -114,10 +114,10 @@ PUTYIN_BOSS = {
 
 T_REX_BOSS1 = {
     "HP": 2000,
-    "ATK": 0,
+    "ATK": 30,
     "DEF": 70,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 50,
     "EXP": 0,
     "LVL": 1,
     "EMOJI": emoji.emojize(":T-Rex:"),
@@ -125,10 +125,10 @@ T_REX_BOSS1 = {
 
 CODECOOLER_BOSS2 = {
     "HP": 2250,
-    "ATK": 0,
+    "ATK": 100,
     "DEF": 1000,
     "HAND": 0,
-    "MANA": 100,
+    "MANA": 1000,
     "EXP": 0,
     "LVL": 1,
     "EMOJI": emoji.emojize(":laptop:"),
