@@ -2,6 +2,7 @@ import characters
 import engine
 import emoji
 import special_events
+from ui import print_message
 
 def check_event(room):
     room_item = room[2][2]
@@ -43,7 +44,8 @@ def event_fight(character, enemy):
 
 
 def event_special(character, special):
-    if character == ':evergreen_tree:':
+    if special == ':evergreen_tree:':
+        print_message(special_events.EAT_PEACH)
         pass
 
 
