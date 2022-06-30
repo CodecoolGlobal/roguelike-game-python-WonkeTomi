@@ -74,7 +74,7 @@ def change_button_pos(pos, buttons, menu_options):
         if pos > 0:
             pos -= 1
     elif key == ' ':
-        menu_options(pos)
+        return menu_options(pos)
     return pos
 
 
