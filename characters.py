@@ -1,7 +1,9 @@
 import emoji
 
+
 def give_name_to_char(name):
     main_character["NAME"] = name
+
 
 main_character = {
     "NAME": "",
@@ -12,6 +14,7 @@ main_character = {
     "EXP": 0,
     "LVL": 1,
     "BAG": {},
+    "INVENTORY": {},
     "EMOJI": emoji.emojize(":baby:")}
 
 

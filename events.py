@@ -4,6 +4,7 @@ import emoji
 import special_events
 import ui
 
+
 def check_event(room):
     room_item = room[2][2]
     if room_item in engine.ITEMS_DICT.keys():
@@ -34,7 +35,15 @@ def check_item(character):
 
 
 def event_item(item, message='You found an item.'):
-    characters.main_character["BAG"].update(item)
+    
+    for _, value in item.items():
+        if value[0] == "A" or value[0] == "D":
+            characters.main_character["INVENTORY"].update(item)
+
+        else:
+
+            characters.main_character["BAG"].update(item)
+
     return characters.main_character
 
 
@@ -43,10 +52,10 @@ def event_fight(character, enemy):
     pass
 
 
-def event_special(character, special):
-    if special == ':evergreen_tree:':
-        ui.print_message(special_events.EAT_PEACH)
-    
+def event_special(character, room):
+    ui.clear_screen()
+    ui.print_room(room)
+    special_events.choose_special(room)
 
 
 def event_win(character, enemy):

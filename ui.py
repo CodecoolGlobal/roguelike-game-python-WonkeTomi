@@ -178,7 +178,7 @@ def create_table(table):
 
     v_line = ''
     for i in range(total_length+1):
-      v_line += '-'
+        v_line += '-'
 
     inner_line_title = '|'
     for i in range(total_length-1):
@@ -187,7 +187,7 @@ def create_table(table):
 
     inner_line = '|'
     for i in range(total_length-1):
-      inner_line += '-'
+        inner_line += '-'
     inner_line += '|'
 
     output += v_line + '\n'
@@ -215,11 +215,11 @@ def print_table(table):
 
 
 def reposition_player_icon(room):
-        for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
-                for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
-                    if room[room_lines][room_cells] == engine.PLAYER_ICON:
-                            room[2][1] = engine.PLAYER_ICON
-                            room[room_lines][room_cells] = engine.FLOOR
+    for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
+        for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
+            if room[room_lines][room_cells] == engine.PLAYER_ICON:
+                room[2][1] = engine.PLAYER_ICON
+                room[room_lines][room_cells] = engine.FLOOR
 
 
 def create_alignment(align):
@@ -288,11 +288,15 @@ def display_board(board):
 
 
 def print_message(message):
-    length = len(message)
-    message_board = [(length + 4) * '-', '|' + (length + 2) * ' ' + '|', '|' + ' ' + message + ' ' + '|', '|' + (length + 2) * ' ' + '|', (length + 4) * '-' ]
-    for row in message_board:
-        print(row)
-
+    terminal_x, terminal_y = os.get_terminal_size()
+    max_length = max([len(word) for word in message]) + 2
+    print(max_length)
+    print(("/" + max_length * '-' + "\\").center(terminal_x))
+    for line in message:
+        print(("|" + max_length * " " + '|').center(terminal_x))
+        print(("|" + line.center(max_length) + "|").center(terminal_x))
+    print(("|" + max_length * " " + '|').center(terminal_x))
+    print(("\\" + max_length * '-' + "/").center(terminal_x))
 
 
 def change_special_menu(button):
@@ -302,7 +306,11 @@ def change_special_menu(button):
         print_error_message("Not implemented yet")
 
 
+def wait_for_enter():
+    input("Press enter to continue.")
+
+
 if __name__ == '__main__':
     # board = engine.create_board()
     # display_board(board)
-    print_message('Ohh no! You are dead! Just inside.')
+    print_message(['Ohh no! You are dead! Just inside.', 'Oaaaaaaahh no! You are dead! Just inside.'])
