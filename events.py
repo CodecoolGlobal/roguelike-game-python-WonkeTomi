@@ -1,7 +1,8 @@
 import characters
 import engine
 import emoji
-
+import special_events
+from ui import print_message
 
 def check_event(room):
     room_item = room[2][2]
@@ -12,7 +13,7 @@ def check_event(room):
     elif room_item in engine.BOSS[1]:
         event_fight(characters.main_character, characters.bosses[engine.BOSS[1].index(room_item)])
     elif room_item in engine.SPECIAL_EVENTS:
-        pass
+        event_special(characters.main_character, room_item)
     else:
         return f"This is an empty room."
 
@@ -42,8 +43,10 @@ def event_fight(character, enemy):
     pass
 
 
-def event_special(spec, decisions):
-    pass
+def event_special(character, special):
+    if special == ':evergreen_tree:':
+        print_message(special_events.EAT_PEACH)
+        pass
 
 
 def event_win(character, enemy):

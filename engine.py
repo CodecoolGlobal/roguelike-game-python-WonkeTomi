@@ -1,4 +1,4 @@
-#Our own modules
+# Our own modules
 import ui
 import sounds
 import events
@@ -8,10 +8,10 @@ import random
 from util import key_pressed
 
 
-ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:':'H20', ':Christmas_tree:':'A3', ':baby_bottle:':'H10', ':magic_wand:':'A20', ':dagger:':'A10', 'crossed_swords':'A20', 'water_pistol':'A5', ':bomb:': 'A23', ':shield:':'D30', ':blue_square:':'D10'}
-NORMAL_ITEMS = [':brick:', list(ITEMS_DICT)]
-SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [[':rock:', ':zany_face:'], [":crocodile:", ":skunk:", ":butterfly:",":mosquito:", ":zombie:", ":clown_face:", ":dodo:", ":vampire:"]]
+ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':magic_wand:': 'A20', ':toilet:': 'A10', ':white_cane:': 'A20', ':videocassette:': 'A5', ':bomb:': 'A23', ':toolbox:': 'D30', ':blue_square:': 'D5'}
+NORMAL_ITEMS = [':brick:', list(ITEMS_DICT.keys())]
+SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
+MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
 BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
@@ -77,6 +77,7 @@ def create_board(width=4, height=4):
         room[i+12][4][2] = room[i+12][4][1]
         room[i*4][2][0] = room[i*4][1][0]
         room[3+(i*4)][2][4] = room[3+(i*4)][1][4]
+
     return room
 
 
@@ -132,6 +133,7 @@ def character_movement(board):
         ui.display_board(board)
         current_room, current_line, current_cell = search_and_clear_player(board, False)
         events.check_event(get_room(board, current_room))
+
         control_key = key_pressed()
         if control_key == ESC:
             game_over = True
@@ -177,5 +179,6 @@ def character_movement(board):
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
     #     print(create_room('#', countain_of_room='8')[i])
-
-    character_movement(create_board())
+    board = create_board()
+    # character_movement(board)
+    ui.print_room(get_room(board, 1))
