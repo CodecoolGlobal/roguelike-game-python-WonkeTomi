@@ -1,7 +1,7 @@
 import ui
 import random
+import characters
 
-GET_CHOICE = ["Yes", "No"]
 
 FAKTOR = ["You are lucky!", "You get fucked!"]
 OUTCOME = ["You lost 20HP", "You got 20HP"]
@@ -23,18 +23,26 @@ POSSIBILITIES = {
     ':floppy_disk:': ['There is no saving in this game.', 'There is no saving in this game but we ar kind.', SAVING],
     ':castle:': ['There are some traps left in the castle and you walk into one.', 'You find some food and ate it.', CASTLE],
     ':llama:': ["The lama wasn't so happy about it so it split at you.", 'The lama was really kind and give his flesh to you what you can eat.', LAMA]
-    }
+}
 
-events = [POSSIBILITIES, ]
 
 def choose_special(special):
     outcome = random.randint(0, 1)
-    for event in events:
-        if special[2][2] == event.keys():
-            print(FAKTOR[outcome])
-            print(event[special[2][2]][outcome])
-            print(OUTCOME[outcome])
-            
-        
-if __name__ == '__main__':
-    choose_special([[''], [''], ['', '', ':evergreen_tree:']])
+    event_index = 2
+    on_goings = []
+    for event in POSSIBILITIES.keys():
+        if special[2][2] in event:
+            on_goings.append(POSSIBILITIES[event][event_index])
+            on_goings.append(FACTOR[outcome])
+            on_goings.append(POSSIBILITIES[event][outcome])
+            on_goings.append(OUTCOME[outcome])
+            if outcome == 0:
+                characters.main_character["HP"] -= 20
+            else:
+                characters.main_character["HP"] += 20
+    ui.print_message(on_goings)
+
+
+if __name__ == "__main__":
+    choose_special([[''], [''], ["", "", ':evergreen_tree:']])    
+
