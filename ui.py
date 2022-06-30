@@ -3,16 +3,15 @@ import emoji
 from util import clear_screen, key_pressed
 import time
 import engine
-import ui
 from os import system
-
+import characters
 
 MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
 
 
 def print_error_message(message):
     print(f"ERROR: {message}")
-    time.sleep(3)
+    time.sleep(1)
 
 
 def display_intro():
@@ -66,13 +65,14 @@ def change_button_pos(pos, buttons, menu_options):
         if pos > 0:
             pos -= 1
     elif key == ' ':
-        menu_options(pos)
+        return menu_options(pos)
     return pos
 
 
 def change_main_menu(button):
     if button == 0:
-        print("yep")
+        characters.give_name_to_char(get_input("Plese type the name of your char: "))
+        return "quit"
     elif button == 1:
         print_error_message("Not implemented yet")
     elif button == 2:
@@ -85,12 +85,17 @@ def button_system(buttons, pos, menu_options):
     pos = change_button_pos(pos, buttons, menu_options)
     return pos
 
+
 def print_menu():
     pos = 0
-    while True:
+    while isinstance(pos, int):
         clear_screen()
-        ui.display_title()
-        pos = button_system(ui.MENU_BUTTONS, pos, change_main_menu)
+        display_title()
+        pos = button_system(MENU_BUTTONS, pos, change_main_menu)
+
+
+def get_input(message):
+    return input(message)
 
 
 def print_info():
