@@ -34,7 +34,15 @@ def check_item(character):
 
 
 def event_item(item, message='You found an item.'):
-    characters.main_character["BAG"].update(item)
+    
+    for _, value in item.items():
+        if value[0] == "A" or value[0] == "D":
+            characters.main_character["INVENTORY"].update(item)
+
+        else:
+
+            characters.main_character["BAG"].update(item)
+
     return characters.main_character
 
 

@@ -12,6 +12,7 @@ main_character = {
     "EXP": 0,
     "LVL": 1,
     "BAG": {},
+    "INVENTORY": {},
     "EMOJI": emoji.emojize(":baby:")}
 
 # MOBOK
