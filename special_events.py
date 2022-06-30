@@ -44,5 +44,5 @@ def choose_special(special):
 
 
 if __name__ == "__main__":
-    choose_special([[''], [''], ["", "", ':floppy_disk:']])    
+    choose_special([[''], [''], ["", "", ':castle:']])    
 
