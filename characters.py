@@ -1,5 +1,7 @@
 import emoji
 
+def give_name_to_char(name):
+    main_character["NAME"] = name
 
 main_character = {
     "NAME": "",
