@@ -3,7 +3,7 @@ import random
 import characters
 
 
-FAKTOR = ["You are lucky!", "You get fucked!"]
+FACTOR = ["You get fucked!", "You are lucky!", ]
 OUTCOME = ["You lost 20HP", "You got 20HP"]
 
 EAT_PEACH = "You have just found a shiny, juicy lookin thicc peach."
@@ -44,5 +44,5 @@ def choose_special(special):
 
 
 if __name__ == "__main__":
-    choose_special([[''], [''], ["", "", ':evergreen_tree:']])    
+    choose_special([[''], [''], ["", "", ':floppy_disk:']])    
 
