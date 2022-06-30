@@ -9,6 +9,8 @@ def check_event(room):
         event_item({room_item: engine.ITEMS_DICT[room_item]})
     elif room_item in engine.MOBS[1]:
         event_fight(characters.main_character, engine.MOBS[room_item])
+    elif room_item in engine.BOSS[1]:
+        event_fight(characters.main_character, engine.BOSS[room_item])
     elif room_item in engine.SPECIAL_EVENTS:
         pass
     else:
@@ -21,11 +23,11 @@ def check_item(character):
         item_value = int(value[1:])
         if item_type == "A":
             character["ATK"] += item_value
-        if item_type == "D":
+        elif item_type == "D":
             character["DEF"] += item_value
-        if item_type == "H":
+        elif item_type == "H":
             character["HP"] += item_value
-        if item_type == "M":
+        elif item_type == "M":
             pass
     return character
 

@@ -16,3 +16,21 @@ def stop_sound():
 
 def load_sound(sound_file_name):
     pygame.mixer.music.load(sound_file_name)
+
+
+def playsound_background_music():
+    init_music_player()
+    sound1 = pygame.mixer.Sound("./SOUNDS/Willow_Escape_3.wav")
+    pygame.mixer.find_channel().play(sound1)
+
+
+def playsound_next_room():
+    init_music_player()
+    sound1 = pygame.mixer.Sound('./SOUNDS/walking_2.wav')
+    pygame.mixer.find_channel().play(sound1)
+
+
+def playsound_error():
+    init_music_player()
+    load_sound('./SOUNDS/error_1.wav')
+    pygame.mixer.music.play(loops=0)
