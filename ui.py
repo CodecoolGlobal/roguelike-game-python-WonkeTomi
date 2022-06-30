@@ -97,8 +97,8 @@ def print_menu():
     pos = 0
     while True:
         clear_screen()
-        ui.display_title()
-        pos = button_system(ui.MENU_BUTTONS, pos, change_main_menu)
+        display_title()
+        pos = button_system(MENU_BUTTONS, pos, change_main_menu)
 
 
 def print_info():
@@ -207,6 +207,14 @@ def print_message(message):
     message_board = [(length + 4) * '-', '|' + (length + 2) * ' ' + '|', '|' + ' ' + message + ' ' + '|', '|' + (length + 2) * ' ' + '|', (length + 4) * '-' ]
     for row in message_board:
         print(row)
+
+
+
+def change_special_menu(button):
+    if button == 0:
+        print("yep")
+    elif button == 1:
+        print_error_message("Not implemented yet")
 
 
 if __name__ == '__main__':

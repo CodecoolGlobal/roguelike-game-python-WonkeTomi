@@ -46,7 +46,7 @@ def event_fight(character, enemy):
 def event_special(character, special):
     if special == ':evergreen_tree:':
         ui.print_message(special_events.EAT_PEACH)
-        pass
+    
 
 
 def event_win(character, enemy):
