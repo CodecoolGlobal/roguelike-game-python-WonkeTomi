@@ -157,10 +157,32 @@ def print_table(table):
     print(f'\n{v_line}')
 
 
+def reposotion_player_icon(room):
+        for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
+                for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
+                    if room[room_lines][room_cells] == engine.PLAYER_ICON:
+                            room[2][1] = engine.PLAYER_ICON
+                            room[room_lines][room_cells] = engine.FLOOR
+
+
+def create_alignment(align):
+    return ''.join([' 'for i in range(align)]) if (align > 0) else ''
+
+
 def print_room(room):
     clear_screen()
-    size = os.get_terminal_size()
+    terminal_x, terminal_y = os.get_terminal_size()
+    room[2][3] = room[2][2]
+    room[2][2] = engine.FLOOR
+    reposotion_player_icon(room)
+    align_x_str = create_alignment((terminal_x-NUMBER_OF_ROWS_IN_A_ROOM) // 2)
+    align_y_int = (terminal_y-NUMBER_OF_ROWS_IN_A_ROOM) // 2
+
+    for i in range(align_y_int):
+        print()
+
     for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
+        print(align_x_str, end='')
         for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
             cell_to_print = room[room_lines][room_cells]
             if len(cell_to_print) == 1:
