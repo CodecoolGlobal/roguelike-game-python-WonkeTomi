@@ -14,7 +14,7 @@ MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
 
 def print_error_message(message):
     print(f"ERROR: {message}")
-    time.sleep(1)
+    time.sleep(3)
 
 
 def display_intro():
@@ -59,17 +59,7 @@ def create_button(buttons, pos):
     return buttons_to_create
 
 
-def print_menu():
-    pos = 0
-    while True:
-        clear_screen()
-        ui.display_title()
-        buttons = ui.create_button(ui.MENU_BUTTONS, pos)
-        ui.display_button(buttons)
-        pos = ui.change_button_pos(pos, buttons)
-
-
-def change_button_pos(pos, buttons):
+def change_button_pos(pos, buttons, menu_options):
     key = key_pressed()
     if key == 's':
         if pos < len(buttons) - 1:
@@ -78,7 +68,7 @@ def change_button_pos(pos, buttons):
         if pos > 0:
             pos -= 1
     elif key == ' ':
-        change_menu(pos)
+        menu_options(pos)
     return pos
 
 
@@ -89,6 +79,21 @@ def change_menu(button):
         print_error_message("Not implemented yet")
     elif button == 2:
         quit()
+
+
+def button_system(buttons, pos, menu_options):
+    created_button = create_button(buttons, pos)
+    display_button(created_button)
+    pos = change_button_pos(pos, buttons, menu_options)
+    return pos
+
+
+def print_menu():
+    pos = 0
+    while True:
+        clear_screen()
+        ui.display_title()
+        pos = button_system(ui.MENU_BUTTONS, pos, change_menu)
 
 
 def print_info():
