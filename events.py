@@ -52,10 +52,10 @@ def event_fight(character, enemy):
     pass
 
 
-def event_special(character, special):
-    if special == ':evergreen_tree:':
-        ui.print_message(special_events.EAT_PEACH)
-    
+def event_special(character, room):
+    ui.clear_screen()
+    ui.print_room(room)
+    special_events.choose_special(room)
 
 
 def event_win(character, enemy):

@@ -26,7 +26,7 @@ POSSIBILITIES = {
 }
 
 
-def choose_special(special):
+def choose_special(character, special):
     outcome = random.randint(0, 1)
     event_index = 2
     on_goings = []
@@ -37,9 +37,9 @@ def choose_special(special):
             on_goings.append(POSSIBILITIES[event][outcome])
             on_goings.append(OUTCOME[outcome])
             if outcome == 0:
-                characters.main_character["HP"] -= 20
+                character["HP"] -= 20
             else:
-                characters.main_character["HP"] += 20
+                character["HP"] += 20
     ui.print_message(on_goings)
 
 
