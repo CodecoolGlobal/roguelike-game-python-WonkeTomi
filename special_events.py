@@ -1,11 +1,12 @@
 import ui
-
+import random
 
 GET_CHOICE = ["Yes", "No"]
+
 FAKTOR = ["You are lucky, ", "You get fucked, "]
-POSSIBILITIES = {':evergreen_tree:' : ["This peach is rotten inside and infested with worms.", "It was really tasty."]
-}
 OUTCOME = ["You lost 20HP", "You got 20HP"]
+
+POSSIBILITIES = {':evergreen_tree:': ["This peach is rotten inside and infested with worms.", "It was really tasty."]}
 EAT_PEACH = "You have just found a shiny, juicy lookin thicc peach. Do you taste it or not?"
 SAVING = "Would you like to save?"
 CASTLE = "You have found an empty looking castle and though what could be inside. Would you like to look around?"
@@ -19,6 +20,15 @@ MIDDLE_FINGER1 = "You have just found a jerk with it's middle finger up and kick
 MIDDLE_FINGER2 = "You have just found a jerk with it's middle finger up and he kicked your ass. It hits you with 50 damage you weak nerd."
 MUSHROOM = "You have found a death cap mushroom and you are hungry. Do you eat it or not?"
 
+events = [POSSIBILITIES, ]
+
 def choose_special(special):
-    YES_NO = ui.create_buttons(GET_CHOICE, pos=0, menu_options)
-    pos = ui.change_button_pos(pos, YES_NO, menu_options)
+    outcome = random.randint(0, 1)
+    for event in events:
+        if special[2][2] == event.keys():
+            print(FAKTOR[outcome])
+            print(event[special[2][2]][outcome])
+            print(OUTCOME[outcome])
+            
+        
+        
