@@ -1,4 +1,4 @@
-#Our own modules
+# Our own modules
 import ui
 import sounds
 import events
@@ -77,6 +77,7 @@ def create_board(width=4, height=4):
         room[i+12][4][2] = room[i+12][4][1]
         room[i*4][2][0] = room[i*4][1][0]
         room[3+(i*4)][2][4] = room[3+(i*4)][1][4]
+
     return room
 
 
@@ -132,6 +133,7 @@ def character_movement(board):
         ui.display_board(board)
         current_room, current_line, current_cell = search_and_clear_player(board, False)
         events.check_event(get_room(board, current_room))
+
         control_key = key_pressed()
         if control_key == ESC:
             game_over = True
@@ -177,5 +179,6 @@ def character_movement(board):
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):
     #     print(create_room('#', countain_of_room='8')[i])
-
-    character_movement(create_board())
+    board = create_board()
+    # character_movement(board)
+    ui.print_room(get_room(board, 1))

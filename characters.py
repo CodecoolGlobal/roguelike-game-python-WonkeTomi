@@ -7,7 +7,7 @@ main_character = {
     "NAME": "",
     "HP": 200,
     "ATK": 10,
-    "DEF": 10,
+    "DEF": 6,
     "MANA": 100,
     "EXP": 0,
     "LVL": 1,
@@ -19,7 +19,7 @@ main_character = {
 CROCODILE = {
     "HP": 50,
     "ATK": 10,
-    "DEF": 10,
+    "DEF": 6,
     "HAND": 0,
     "MANA": 5,
     "LVL": 1,
