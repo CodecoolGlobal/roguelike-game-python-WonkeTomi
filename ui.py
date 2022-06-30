@@ -63,7 +63,8 @@ def print_menu():
         buttons = ui.create_button(ui.MENU_BUTTONS, pos)
         ui.display_button(buttons)
         pos = ui.change_button_pos(pos, buttons)
-
+        if isinstance(pos, list):
+            change_menu(pos[0])
 
 def change_button_pos(pos, buttons):
     key = key_pressed()
@@ -73,6 +74,8 @@ def change_button_pos(pos, buttons):
     elif key == 'w':
         if pos > 0:
             pos -= 1
+    elif key == ' ':
+        pos = str(pos)
     return pos
 
 
@@ -91,6 +94,7 @@ def change_menu(button):
         load_player()
     elif button == -1:
         quit()'''
+
 
 def print_info():
     print()
