@@ -100,7 +100,7 @@ def print_info():
     print('\n--> Press WSAD to move <--   --> Press ESC to quit <--')
 
 
-def display_board(board):
+def display_board(board): 
     '''
     Displays complete game board on the screen
 
@@ -132,6 +132,14 @@ def display_board(board):
     print_info()
 
 
+def print_message(message):
+    length = len(message)
+    message_board = [(length + 4) * '-', '|' + (length + 2) * ' ' + '|', '|' + ' ' + message + ' ' + '|', '|' + (length + 2) * ' ' + '|', (length + 4) * '-' ]
+    for row in message_board:
+        print(row)
+
+
 if __name__ == '__main__':
-    board = engine.create_board()
-    display_board(board)
+    # board = engine.create_board()
+    # display_board(board)
+    print_message('Ohh no! You are dead! Just inside.')
