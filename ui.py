@@ -10,8 +10,6 @@ from os import system
 MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
 
 
-
-
 def print_error_message(message):
     print(f"ERROR: {message}")
     time.sleep(3)
@@ -46,12 +44,12 @@ def display_title():
     ''')
 
 
-def display_button(buttons):
+def display_buttons(buttons):
     for button in buttons:
         print(f"\n {button.center(80)}")
 
 
-def create_button(buttons, pos):
+def create_buttons(buttons, pos):
     symbol_right = ' <-'
     symbol_left = '-> '
     buttons_to_create = copy(buttons)
@@ -72,7 +70,7 @@ def change_button_pos(pos, buttons, menu_options):
     return pos
 
 
-def change_menu(button):
+def change_main_menu(button):
     if button == 0:
         print("yep")
     elif button == 1:
@@ -82,18 +80,17 @@ def change_menu(button):
 
 
 def button_system(buttons, pos, menu_options):
-    created_button = create_button(buttons, pos)
-    display_button(created_button)
+    created_buttons = create_buttons(buttons, pos)
+    display_buttons(created_buttons)
     pos = change_button_pos(pos, buttons, menu_options)
     return pos
-
 
 def print_menu():
     pos = 0
     while True:
         clear_screen()
         ui.display_title()
-        pos = button_system(ui.MENU_BUTTONS, pos, change_menu)
+        pos = button_system(ui.MENU_BUTTONS, pos, change_main_menu)
 
 
 def print_info():
