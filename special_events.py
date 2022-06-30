@@ -29,6 +29,3 @@ def choose_special(special):
             print(FAKTOR[outcome])
             print(event[special[2][2]][outcome])
             print(OUTCOME[outcome])
-            
-        
-        

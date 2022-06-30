@@ -3,7 +3,6 @@ import ui
 import sounds
 import events
 import characters
-
 import random
 from util import key_pressed
 
@@ -161,20 +160,6 @@ def character_movement(board):
                 put_player_on_board(board, current_room+1, LEFT)
             else:
                 sounds.playsound_error()
-
-
-'''def create_new_player():
-    valid_name = False
-    while not valid_name:
-        player_name = "./player/"
-        player_name += input(" Please give me your character name: ")
-        player_name += ".txt"
-        if os.path.exists(player_name):
-            ui.print_error_message("Player name is already taken choose another one!")
-        else:
-            with open(player_name,'w') as file:
-                file.write('''
-
 
 if __name__ == "__main__":
     # for i in range(len(create_room('#', countain_of_room='8'))):

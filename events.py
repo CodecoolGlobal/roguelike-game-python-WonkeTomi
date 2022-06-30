@@ -4,6 +4,7 @@ import emoji
 import special_events
 import ui
 
+
 def check_event(room):
     room_item = room[2][2]
     if room_item in engine.ITEMS_DICT.keys():
