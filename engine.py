@@ -27,6 +27,11 @@ LEFT = (2, 1)
 RIGHT = (2, 3)
 PLAYER_ICON = characters.main_character['EMOJI']
 
+NUMBER_OF_ROWS_OF_ROOMS = 4
+NUMBER_OF_ROWS_IN_A_ROOM = 5
+NUMBER_OF_ROOMS_IN_A_ROW = 4
+NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM = 5
+
 
 def create_room(wall_elements, countain_of_room=FLOOR, door=DOOR):
     first_last_row = [wall_elements, wall_elements, door, wall_elements, wall_elements]
@@ -102,12 +107,7 @@ def put_player_on_board_by_coordinate(board, coordinate):
     board[coordinate[0]][coordinate[1]][coordinate[2]] = PLAYER_ICON
 
 
-def search_and_clear_player(board, clear_player):
-    NUMBER_OF_ROWS_OF_ROOMS = 4
-    NUMBER_OF_ROWS_IN_A_ROOM = 5
-    NUMBER_OF_ROOMS_IN_A_ROW = 4
-    NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM = 5
-
+def search_and_clear_player_in_board(board, clear_player):
     for room_row in range(NUMBER_OF_ROWS_OF_ROOMS):
         for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
             for room in range(NUMBER_OF_ROOMS_IN_A_ROW):
@@ -131,7 +131,7 @@ def character_movement(board):
     game_over = False
     while not game_over:
         ui.display_board(board)
-        current_room, current_line, current_cell = search_and_clear_player(board, False)
+        current_room, current_line, current_cell = search_and_clear_player_in_board(board, False)
         events.check_event(get_room(board, current_room))
 
         control_key = key_pressed()
@@ -139,25 +139,25 @@ def character_movement(board):
             game_over = True
         elif control_key == 'w':
             if is_in_the_board(current_room-4, current_room-4):
-                search_and_clear_player(board, True)    
+                search_and_clear_player_in_board(board, True)    
                 put_player_on_board(board, current_room-4, BOTTOM)
             else:
                 sounds.playsound_error()
         elif control_key == 's':
             if is_in_the_board(current_room+4, current_room+4):
-                search_and_clear_player(board, True)    
+                search_and_clear_player_in_board(board, True)    
                 put_player_on_board(board, current_room+4, TOP)
             else:
                 sounds.playsound_error()
         elif control_key == 'a':
             if is_in_the_board(current_room, current_room-1):
-                search_and_clear_player(board, True)    
+                search_and_clear_player_in_board(board, True)    
                 put_player_on_board(board, current_room-1, RIGHT)
             else:
                 sounds.playsound_error()
         elif control_key == 'd':
             if is_in_the_board(current_room, current_room+1):
-                search_and_clear_player(board, True)    
+                search_and_clear_player_in_board(board, True)    
                 put_player_on_board(board, current_room+1, LEFT)
             else:
                 sounds.playsound_error()
@@ -181,4 +181,6 @@ if __name__ == "__main__":
     #     print(create_room('#', countain_of_room='8')[i])
     board = create_board()
     # character_movement(board)
-    ui.print_room(get_room(board, 1))
+    room = get_room(board, 1)
+    room[3][2] = PLAYER_ICON
+    ui.print_room(room)
