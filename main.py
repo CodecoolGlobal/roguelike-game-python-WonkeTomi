@@ -5,6 +5,13 @@ import ui
 import emoji
 
 
+def before_game():
+     ui.display_intro()
+     ui.print_menu()
+
+def main():
+    before_game()
+    
+
 if __name__ == '__main__':
-    # ui.display_intro()
-    ui.print_menu()
+     ui.print_menu()

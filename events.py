@@ -46,7 +46,7 @@ def event_fight(character, enemy):
 def event_special(character, special):
     if special == ':evergreen_tree:':
         ui.print_message(special_events.EAT_PEACH)
-        pass
+    
 
 
 def event_win(character, enemy):
@@ -70,10 +70,10 @@ def event_die(character, enemy):
 
 if __name__ == "__main__":
     #characters.CROCODILE["HP"] = 0
-    print(event_win(characters.main_character, characters.CROCODILE))
-    print(event_die(characters.main_character, characters.CROCODILE))
-    event_item({':dagger:': 'A10'})
-    event_item({':baby_bottle:': 'H10'})
+    print(event_win(characters.main_character, characters.SKUNK))
+    print(event_die(characters.main_character, characters.SKUNK))
+    event_item({':dagger:':'A10'})
+    event_item({':baby_bottle:':'H10'})
     print(characters.main_character["BAG"])
     check_item(characters.main_character)
     print(characters.main_character)
