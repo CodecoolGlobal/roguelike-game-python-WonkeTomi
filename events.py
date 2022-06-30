@@ -8,7 +8,7 @@ def check_event(room):
     if room_item in engine.ITEMS_DICT.keys():
         event_item({room_item: engine.ITEMS_DICT[room_item]})
     elif room_item in engine.MOBS[1]:
-        event_fight(characters.main_character, engine.MOBS[room_item])
+        event_fight(characters.main_character, characters.mobs[engine.MOBS[1].index(room_item)])
     elif room_item in engine.SPECIAL_EVENTS:
         pass
     else:
@@ -36,6 +36,7 @@ def event_item(item, message='You found an item.'):
 
 
 def event_fight(character, enemy):
+    print("MOBS FOUND")
     pass
 
 
