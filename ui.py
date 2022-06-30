@@ -250,6 +250,10 @@ def change_special_menu(button):
         print_error_message("Not implemented yet")
 
 
+def wait_for_enter():
+    input("Press enter to continue.")
+
+
 if __name__ == '__main__':
     # board = engine.create_board()
     # display_board(board)
