@@ -1,7 +1,7 @@
 import characters
 import engine
 import emoji
-
+import special_events
 
 def check_event(room):
     room_item = room[2][2]
@@ -42,8 +42,9 @@ def event_fight(character, enemy):
     pass
 
 
-def event_special(spec, decisions):
-    pass
+def event_special(character, special):
+    if character == ':evergreen_tree:':
+        pass
 
 
 def event_win(character, enemy):
