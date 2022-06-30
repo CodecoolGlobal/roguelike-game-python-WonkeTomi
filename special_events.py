@@ -18,7 +18,3 @@ ICE_CREAM = "You have found an ice cream and it looks like it's melting. Do you 
 MIDDLE_FINGER1 = "You have just found a jerk with it's middle finger up and kicked his ass. Do you take +10 attack or did it just for fun?"
 MIDDLE_FINGER2 = "You have just found a jerk with it's middle finger up and he kicked your ass. It hits you with 50 damage you weak nerd."
 MUSHROOM = "You have found a death cap mushroom and you are hungry. Do you eat it or not?"
-
-def choose_special(special):
-    YES_NO = ui.create_buttons(GET_CHOICE, pos=0, menu_options)
-    pos = ui.change_button_pos(pos, YES_NO, menu_options)

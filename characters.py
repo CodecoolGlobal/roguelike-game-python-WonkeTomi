@@ -14,6 +14,8 @@ main_character = {
     "BAG": {},
     "EMOJI": emoji.emojize(":baby:")}
 
+
+# main_character['BAG'] = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3'}
 # MOBOK
 
 CROCODILE = {

@@ -11,7 +11,6 @@ import characters
 import os
 
 MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
-SCREEN_ALIGNMENT = '                                    '
 
 NUMBER_OF_ROWS_OF_ROOMS = 4
 NUMBER_OF_ROWS_IN_A_ROOM = 5
@@ -108,21 +107,62 @@ def get_input(message):
     return input(message)
 
 
+def replace_list_item(orig_list, new_item, index):
+    output = orig_list[:index]+[new_item]+orig_list[index+1:]
+    return output
+
+
+def add_items_info(info_table):
+    # new_item_str = info_table[0]
+    new_item = f'{info_table[0]}      --------------'
+    info_table = replace_list_item(info_table, new_item, 0)
+
+    new_item = f'{info_table[1]}      |Your items: |'
+    info_table = replace_list_item(info_table, new_item, 1)
+
+    new_item = f'{info_table[2]}      |============|'
+    info_table = replace_list_item(info_table, new_item, 2)
+
+    new_item = f'{info_table[3]}      |            |'
+    info_table = replace_list_item(info_table, new_item, 3)
+
+    return info_table
+
+
+def text_to_list(text):
+    output = []
+    i = 0
+    line = ''
+    while i < len(text):
+        if text[i] != '\n':
+            line += text[i]
+        else:
+            output.append(line)
+            line = ''
+        i += 1
+    output.append(line)
+    return output
+
+
+def print_items(items):
+    print('|', end='')
+    for item in items:
+        print(emoji.emojize(item), end='')
+    print()
+
+
 def print_info():
     table =[]
     table.append(['Name', 'HP', 'Attack', 'Defense', 'Experience', 'Level'])
     table.append([characters.main_character['NAME'], characters.main_character['HP'], characters.main_character['ATK'], characters.main_character['DEF'], characters.main_character['EXP'], characters.main_character['LVL']])
-    print_table(table)
-    print(f'{SCREEN_ALIGNMENT}--> Press WSAD to move <--   --> Press ESC to quit <--')
+    align_x_str, align_y_int = center_text(54, 1)
+    print_table(add_items_info(text_to_list(create_table(table))))
+    print_items(characters.main_character['BAG'])
+    print(f'{align_x_str}--> Press WSAD to move <--   --> Press ESC to quit <--')
 
 
-def print_table(table):
-    """Prints tabular data like above.
-
-    Args:
-        table: list of lists - the table to print out
-    """
-
+def create_table(table):
+    output = ''
     number_of_columns = len(table[0])
 
     row_lenghts = [0 for i in range(number_of_columns)]
@@ -150,20 +190,31 @@ def print_table(table):
       inner_line += '-'
     inner_line += '|'
 
-    print(v_line)
+    output += v_line + '\n'
     for row in range(len(table)):
         for item in range(len(table[row])):
             print_item = str(table[row][item]).center(row_lenghts[item])
-            print(f'| {print_item} ', end='')
-        print(' |', end='')
+            output += f'| {print_item} '
+        output += ' |'
         if row != len(table)-1 and (row != 0):
-            print(f'\n{inner_line}')
+            output += f'\n{inner_line}'
         elif row == 0:
-            print(f'\n{inner_line_title}') 
-    print(f'\n{v_line}')
+            output += f'\n{inner_line_title}\n'
+    output += f'\n{v_line}'
+    
+    return output
 
 
-def reposotion_player_icon(room):
+def print_table(table):
+    align_x_str, align_y_int = center_text(80, 1)
+    length = len(table)
+    for i in range(length-1):
+        print(align_x_str + table[i])
+    print(align_x_str + table[length-1], end='')
+    print('      ', end='')
+
+
+def reposition_player_icon(room):
         for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
                 for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
                     if room[room_lines][room_cells] == engine.PLAYER_ICON:
@@ -175,15 +226,20 @@ def create_alignment(align):
     return ''.join([' 'for i in range(align)]) if (align > 0) else ''
 
 
+def center_text(text_width, text_height):
+    terminal_x, terminal_y = os.get_terminal_size()
+    align_x_str = create_alignment((terminal_x-text_width) // 2)
+    align_y_int = (terminal_y-text_height) // 2
+    return align_x_str, align_y_int
+
+
 def print_room(room):
     clear_screen()
-    terminal_x, terminal_y = os.get_terminal_size()
     room[2][3] = room[2][2]
     room[2][2] = engine.FLOOR
-    reposotion_player_icon(room)
-    align_x_str = create_alignment((terminal_x-NUMBER_OF_ROWS_IN_A_ROOM) // 2)
-    align_y_int = (terminal_y-NUMBER_OF_ROWS_IN_A_ROOM) // 2
-
+    reposition_player_icon(room)
+    align_x_str, align_y_int = center_text(5, 5)
+    
     for i in range(align_y_int):
         print()
 
@@ -210,12 +266,12 @@ def display_board(board):
     clear_screen()
 
     items = ['Your items:']
-
+    align_x_str, align_y_int = center_text(46, 46)
 
     for room_row in range(NUMBER_OF_ROWS_OF_ROOMS):
         for room_lines in range(NUMBER_OF_ROWS_IN_A_ROOM):
-            print('Your items:', end='')
-            print(SCREEN_ALIGNMENT, end='')
+            # print('Your items:', end='')
+            print(align_x_str, end='')
             for room in range(NUMBER_OF_ROOMS_IN_A_ROW):
                 for room_cells in range(NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM):
                     current_room = (room_row*NUMBER_OF_ROWS_OF_ROOMS)+room
