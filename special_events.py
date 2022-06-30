@@ -3,7 +3,7 @@ import random
 import characters
 
 
-FAKTOR = ["You are lucky!", "You get fucked!"]
+FACTOR = ["You get fucked!", "You are lucky!", ]
 OUTCOME = ["You lost 20HP", "You got 20HP"]
 
 EAT_PEACH = "You have just found a shiny, juicy lookin thicc peach."
@@ -20,7 +20,7 @@ MIDDLE_FINGER2 = "You have just found a jerk with it's middle finger up and he k
 MUSHROOM = "You have found a death cap mushroom and you are hungry. Do you eat it or not?"
 POSSIBILITIES = {
     ':evergreen_tree:': ["This peach is rotten inside and infested with worms.", "It was really tasty.", EAT_PEACH],
-    ':floppy_disk:': ['There is no saving in this game.', 'There is no saving in this game but we ar kind.', SAVING],
+    ':floppy_disk:': ['There is no saving in this game.', 'There is no saving in this game but we are kind.', SAVING],
     ':castle:': ['There are some traps left in the castle and you walk into one.', 'You find some food and ate it.', CASTLE],
     ':llama:': ["The lama wasn't so happy about it so it split at you.", 'The lama was really kind and give his flesh to you what you can eat.', LAMA]
 }
@@ -44,5 +44,5 @@ def choose_special(special):
 
 
 if __name__ == "__main__":
-    choose_special([[''], [''], ["", "", ':evergreen_tree:']])    
+    choose_special([[''], [''], ["", "", ':floppy_disk:']])    
 
