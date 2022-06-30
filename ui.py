@@ -19,12 +19,9 @@ NUMBER_OF_ROOMS_IN_A_ROW = 4
 NUMBER_OF_CELLS_IN_A_ROW_IN_A_ROOM = 5
 
 
-def clear_screen():
-    system('clear')
-
-
 def print_error_message(message):
-    print("ERROR: {message}")
+    print(f"ERROR: {message}")
+    time.sleep(3)
 
 
 def display_intro():
@@ -56,12 +53,12 @@ def display_title():
     ''')
 
 
-def display_button(buttons):
+def display_buttons(buttons):
     for button in buttons:
         print(f"\n {button.center(80)}")
 
 
-def create_button(buttons, pos):
+def create_buttons(buttons, pos):
     symbol_right = ' <-'
     symbol_left = '-> '
     buttons_to_create = copy(buttons)
@@ -69,17 +66,7 @@ def create_button(buttons, pos):
     return buttons_to_create
 
 
-def print_menu():
-    pos = 0
-    while True:
-        clear_screen()
-        ui.display_title()
-        buttons = ui.create_button(ui.MENU_BUTTONS, pos)
-        ui.display_button(buttons)
-        pos = ui.change_button_pos(pos, buttons)
-
-
-def change_button_pos(pos, buttons):
+def change_button_pos(pos, buttons, menu_options):
     key = key_pressed()
     if key == 's':
         if pos < len(buttons) - 1:
@@ -87,10 +74,12 @@ def change_button_pos(pos, buttons):
     elif key == 'w':
         if pos > 0:
             pos -= 1
+    elif key == ' ':
+        menu_options(pos)
     return pos
 
 
-def change_menu(button):
+def change_main_menu(button):
     if button == 0:
         print("yep")
     elif button == 1:
@@ -98,13 +87,20 @@ def change_menu(button):
     elif button == 2:
         quit()
 
-    '''def changeing_menu(button):
-    if button == 1:
-        create_new_player()
-    elif button == 0:
-        load_player()
-    elif button == -1:
-        quit()'''
+
+def button_system(buttons, pos, menu_options):
+    created_buttons = create_buttons(buttons, pos)
+    display_buttons(created_buttons)
+    pos = change_button_pos(pos, buttons, menu_options)
+    return pos
+
+def print_menu():
+    pos = 0
+    while True:
+        clear_screen()
+        ui.display_title()
+        pos = button_system(ui.MENU_BUTTONS, pos, change_main_menu)
+
 
 def print_info():
     table =[]
@@ -175,7 +171,7 @@ def print_room(room):
     print()
 
 
-def display_board(board):
+def display_board(board): 
     '''
     Displays complete game board on the screen
 
@@ -207,7 +203,14 @@ def display_board(board):
     print_info()
 
 
-if __name__ == '__main__':
-    board = engine.create_board()
-    # display_board(board)
+def print_message(message):
+    length = len(message)
+    message_board = [(length + 4) * '-', '|' + (length + 2) * ' ' + '|', '|' + ' ' + message + ' ' + '|', '|' + (length + 2) * ' ' + '|', (length + 4) * '-' ]
+    for row in message_board:
+        print(row)
 
+
+if __name__ == '__main__':
+    # board = engine.create_board()
+    # display_board(board)
+    print_message('Ohh no! You are dead! Just inside.')
