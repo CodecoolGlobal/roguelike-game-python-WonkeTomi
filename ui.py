@@ -10,12 +10,11 @@ from os import system
 MENU_BUTTONS = ["New Game", "Continue", "I'm too weak, so I Quit"]
 
 
-def clear_screen():
-    system('clear')
 
 
 def print_error_message(message):
-    print("ERROR: {message}")
+    print(f"ERROR: {message}")
+    time.sleep(1)
 
 
 def display_intro():
@@ -68,8 +67,7 @@ def print_menu():
         buttons = ui.create_button(ui.MENU_BUTTONS, pos)
         ui.display_button(buttons)
         pos = ui.change_button_pos(pos, buttons)
-        if isinstance(pos, list):
-            change_menu(pos[0])
+
 
 def change_button_pos(pos, buttons):
     key = key_pressed()
@@ -80,7 +78,7 @@ def change_button_pos(pos, buttons):
         if pos > 0:
             pos -= 1
     elif key == ' ':
-        pos = str(pos)
+        change_menu(pos)
     return pos
 
 
@@ -91,14 +89,6 @@ def change_menu(button):
         print_error_message("Not implemented yet")
     elif button == 2:
         quit()
-
-    '''def changeing_menu(button):
-    if button == 1:
-        create_new_player()
-    elif button == 0:
-        load_player()
-    elif button == -1:
-        quit()'''
 
 
 def print_info():

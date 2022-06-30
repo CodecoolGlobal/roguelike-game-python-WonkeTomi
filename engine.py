@@ -8,8 +8,8 @@ import random
 from util import key_pressed
 
 
-ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:':'H20', ':Christmas_tree:':'A3', ':baby_bottle:':'H10', ':magic_wand:':'A20', ':dagger:':'A10', 'crossed_swords':'A20', 'water_pistol':'A5', ':bomb:': 'A23', ':shield:':'D30', ':blue_square:':'D5'}
-NORMAL_ITEMS = [':brick:', list(ITEMS_DICT)]
+ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':magic_wand:': 'A20', ':dagger:':'A10', ':crossed_swords:': 'A20', ':water_pistol:': 'A5', ':bomb:': 'A23', ':shield:': 'D30', ':blue_square:': 'D5'}
+NORMAL_ITEMS = [':brick:', list(ITEMS_DICT.keys())]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':salt:', ':zebra:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':shallow_pan_of_food:', ':salt:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
 MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
 BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":laptop:"]]

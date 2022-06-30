@@ -12,7 +12,7 @@ def check_event(room):
     elif room_item in engine.BOSS[1]:
         event_fight(characters.main_character, engine.BOSS[room_item])
     elif room_item in engine.SPECIAL_EVENTS:
-        pass
+        event_special(characters.main_character, room_item)
     else:
         return f"This is an empty room."
 
@@ -68,8 +68,8 @@ if __name__ == "__main__":
     #characters.CROCODILE["HP"] = 0
     print(event_win(characters.main_character, characters.CROCODILE))
     print(event_die(characters.main_character, characters.CROCODILE))
-    event_item({':dagger:':'A10'})
-    event_item({':baby_bottle:':'H10'})
+    event_item({':dagger:': 'A10'})
+    event_item({':baby_bottle:': 'H10'})
     print(characters.main_character["BAG"])
     check_item(characters.main_character)
     print(characters.main_character)
