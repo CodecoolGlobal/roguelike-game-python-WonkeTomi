@@ -3,7 +3,6 @@ import emoji
 from util import clear_screen, key_pressed
 import time
 import engine
-import ui
 from os import system
 
 
