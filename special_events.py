@@ -20,10 +20,10 @@ MIDDLE_FINGER2 = "You have just found a jerk with it's middle finger up and he k
 MUSHROOM = "You have found a death cap mushroom and you are hungry. Do you eat it or not?"
 POSSIBILITIES = {
     ':evergreen_tree:': ["This peach is rotten inside and infested with worms.", "It was really tasty.", EAT_PEACH],
-    ':floppy_disk:': ['There is no saving in this game.', 'There is no saving in this game but we ar kind.', SAVING],
+    ':floppy_disk:': ['There is no saving in this game.', 'There is no saving in this game but we are kind.', SAVING],
     ':castle:': ['There are some traps left in the castle and you walk into one.', 'You find some food and ate it.', CASTLE],
-    ':llama:': ["The lama wasn't so happy about it so it split at you.", 'The lama was really kind and give his flesh to you what you can eat.', LAMA]
-}
+    ':llama:': ["The lama wasn't so happy about it so it split at you.", 'The lama was really kind and give his flesh to you what you can eat.', LAMA],
+    }
 
 
 def choose_special(special):
