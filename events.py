@@ -36,7 +36,7 @@ def event_item(item, message='You found an item.'):
 
 
 def event_fight(character, enemy):
-    print("MOBS FOUND")
+    print(enemy)
     pass
 
 
