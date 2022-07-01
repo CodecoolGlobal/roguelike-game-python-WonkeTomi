@@ -35,11 +35,12 @@ def attack_menu(room):
 
 
 def calc_damage(character, enemy, fight_type):
+    print(enemy)
     if enemy in engine.MOBS[1]:
         enemy = characters.mobs[engine.MOBS[1].index(enemy)]
     elif enemy in engine.BOSS[1]:
         enemy = characters.bosses[engine.BOSS[1].index(enemy)]
-    print(enemy)
+    
     
     atk_modifier, def_modifier = 1.0, 1.0
     luck = 0.5 + random.random()
@@ -96,8 +97,8 @@ def use_inventory(character):
 
 
 if __name__ == "__main__":
-    # while characters.CROCODILE["HP"] > 0:
-    #     calc_damage(characters.main_character, characters.CROCODILE, "attack")
-    random_room_for_testing = engine.create_room(random.choice(engine.MOBS[0]), random.choice(engine.MOBS[1]))
-    attack_menu(random_room_for_testing)
-    check_hp(attack_menu(engine.create_room(random_room_for_testing)))
+    #while characters.CROCODILE["HP"] > 0:
+    #    calc_damage(characters.main_character, characters.CROCODILE, "attack")
+    #random_room_for_testing = engine.create_room(random.choice(), random.choice(engine.MOBS[1]))
+    attack_menu(engine.create_room(engine.MOBS[0],engine.MOBS[1][1]))
+    check_hp(attack_menu(engine.create_room(engine.MOBS[0],engine.MOBS[1][1])))
