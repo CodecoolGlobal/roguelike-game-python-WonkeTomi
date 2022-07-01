@@ -4,13 +4,14 @@ import sounds
 import events
 import characters
 import random
+import copy
 from util import key_pressed
 
 
 ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':firecracker:': 'A20', ':toilet:': 'A10', ':white_cane:': 'A20', ':videocassette:': 'A5', ':bomb:': 'A23', ':toolbox:': 'D30', ':blue_square:': 'D5'}
 NORMAL_ITEMS = [':brick:', list(ITEMS_DICT.keys())]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [':fire:', [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
+MOBS = [':fire:', [":crocodile:", ":skunk:", ":butterfly:", ":mosquito:", ":zombie:", ":clown_face:", ":dodo:", ":vampire:"]]
 BOSS = [':skull:', [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
@@ -141,28 +142,31 @@ def character_movement(board):
             game_over = True
         elif control_key == 'w':
             if is_in_the_board(current_room-4, current_room-4):
-                search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room-4, BOTTOM)
+                search_and_clear_player_in_board(board, True)
+                current_room -= 4    
+                put_player_on_board(board, current_room, BOTTOM)
             else:
                 sounds.playsound_error()
         elif control_key == 's':
             if is_in_the_board(current_room+4, current_room+4):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room+4, TOP)
+                current_room += 4
+                put_player_on_board(board, current_room, TOP)
             else:
                 sounds.playsound_error()
         elif control_key == 'a':
             if is_in_the_board(current_room, current_room-1):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room-1, RIGHT)
+                current_room -= 1
+                put_player_on_board(board, current_room, RIGHT)
             else:
                 sounds.playsound_error()
         elif control_key == 'd':
             if is_in_the_board(current_room, current_room+1):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room+1, LEFT)
-                
+                current_room += 1
+                put_player_on_board(board, current_room, LEFT)
             else:
                 sounds.playsound_error()
-        events.check_event(get_room(board, current_room))
-
+        # current_room_cp = copy.deepcopy(current_room)
+        events.check_event(get_room(copy.deepcopy(board), copy.deepcopy(current_room)))
