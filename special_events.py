@@ -45,10 +45,10 @@ def choose_special(character, special):
             on_goings.append(OUTCOME[outcome])
             if outcome == 0:
                 character["HP"] -= 20
-            else:
+            else: 
                 character["HP"] += 20
             ui.print_message(on_goings)
-    time.sleep(5)
+            time.sleep(5)
 
 
 if __name__ == "__main__":
