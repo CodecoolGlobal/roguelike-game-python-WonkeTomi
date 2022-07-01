@@ -3,6 +3,7 @@ import util
 import engine
 import ui
 import emoji
+import json
 
 
 def before_game():
@@ -13,9 +14,11 @@ def before_game():
 def start_the_game():
     engine.character_movement(engine.create_board())
 
+
 def main():
     before_game()
     start_the_game()
+
 
 if __name__ == '__main__':
     main()

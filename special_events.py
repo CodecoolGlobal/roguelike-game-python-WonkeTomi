@@ -51,4 +51,3 @@ def choose_special(character, special):
 
 if __name__ == "__main__":
     choose_special(characters.main_character, [[''], [''], ["", "", ':mushroom:']])    
-

@@ -41,8 +41,7 @@ def display_intro():
     clear_screen()
 
 
-def display_title():
-    
+def display_title():    
     print('''
         ▄▄▌ ▐ ▄▌      ▄▄▄  ▄▄▌  ·▄▄▄▄            ·▄▄▄    ·▄▄▄▄•.▄▄ ·  ▄▄▄· 
         ██· █▌▐█▪     ▀▄ █·██•  ██▪ ██     ▪     ▐▄▄·    ▪▀·.█▌▐█ ▀. ▐█ ▀█ 
@@ -166,12 +165,12 @@ def create_table(table):
     number_of_columns = len(table[0])
 
     row_lenghts = [0 for i in range(number_of_columns)]
-    
+
     for row in table:
         for i in range(len(row)):
             if len(str(row[i])) > row_lenghts[i]:
                 row_lenghts[i] = len( str(row[i]) )
-    
+
     total_length = 1
     for item in row_lenghts:
         total_length += (item + 3)
@@ -201,7 +200,7 @@ def create_table(table):
         elif row == 0:
             output += f'\n{inner_line_title}\n'
     output += f'\n{v_line}'
-    
+
     return output
 
 
@@ -239,7 +238,7 @@ def print_room(room):
     room[2][2] = engine.FLOOR
     reposition_player_icon(room)
     align_x_str, align_y_int = center_text(5, 5)
-    
+
     for i in range(align_y_int):
         print()
 
@@ -308,9 +307,3 @@ def change_special_menu(button):
 
 def wait_for_enter():
     input("Press enter to continue.")
-
-
-if __name__ == '__main__':
-    # board = engine.create_board()
-    # display_board(board)
-    print_message(['Ohh no! You are dead! Just inside.', 'Oaaaaaaahh no! You are dead! Just inside.'])
