@@ -53,8 +53,9 @@ def display_title():
 
 
 def display_buttons(buttons):
+    terminal_x, terminal_y = os.get_terminal_size()
     for button in buttons:
-        print(f"\n {button.center(80)}")
+        print(f"\n {button.center(terminal_x)}")
 
 
 def create_buttons(buttons, pos):
@@ -296,7 +297,7 @@ def print_message(message):
         print(("|" + line.center(max_length) + "|").center(terminal_x))
     print(("|" + max_length * " " + '|').center(terminal_x))
     print(("\\" + max_length * '-' + "/").center(terminal_x))
-    time.sleep(5)
+
 
 def change_special_menu(button):
     if button == 0:

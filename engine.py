@@ -135,6 +135,8 @@ def character_movement(board):
     while not game_over:
         ui.display_board(board)
         current_room, current_line, current_cell = search_and_clear_player_in_board(board, False)
+        
+
         control_key = key_pressed()
         if control_key == ESC:
             game_over = True
