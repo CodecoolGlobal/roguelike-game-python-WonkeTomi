@@ -24,6 +24,7 @@ def check_hp(character, enemy):
 
 
 def attack_menu(room):
+    ui.clear_screen()
     pos = 0
     buttons = ["Attack", "Defend", "Item"]
     while isinstance(pos, int):
