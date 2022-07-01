@@ -55,7 +55,7 @@ def calc_damage(character, enemy_display, fight_type):
             atk_modifier *= 0.75
         elif enemy["HP"] < 20:
             atk_modifier *= 1.1
-        atk_modifier += luck / 2
+        atk_modifier += luck / 1.5
         damage = round(character["ATK"] * atk_modifier) - enemy["DEF"]
         if damage <= 0:
             damage = 1
@@ -68,7 +68,7 @@ def calc_damage(character, enemy_display, fight_type):
             def_modifier *= 0.75
         elif enemy["HP"] > 20:
             def_modifier *= 1.1
-        def_modifier += luck / 2
+        def_modifier += luck / 1.5
         resistance = round(character["DEF"] * def_modifier) - enemy["ATK"]
         if resistance < 5:
             resistance = 5

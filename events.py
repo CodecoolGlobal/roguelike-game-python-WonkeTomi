@@ -36,7 +36,6 @@ def check_item(character):
 
 
 def event_item(item, message='You found an item.'):
-
     for _, value in item.items():
         if value[0] == "A" or value[0] == "D":
             characters.main_character["INVENTORY"].update(item)
@@ -46,6 +45,7 @@ def event_item(item, message='You found an item.'):
 
 
 def event_fight(character, enemy, room):
+    ui.clear_screen()
     ui.print_room(room)
     check_hp = fight.check_hp(character, enemy)
     while check_hp == None:
@@ -89,4 +89,4 @@ if __name__ == "__main__":
     # print(characters.main_character["BAG"])
     # check_item(characters.main_character)
     # print(characters.main_character)
-    event_fight(characters.main_character, characters.CROCODILE, engine.create_room(engine.MOBS[0], engine.MOBS[1][4]))
+    event_fight(characters.main_character, characters.CROCODILE, engine.create_room(engine.MOBS[0], engine.MOBS[1][0]))
