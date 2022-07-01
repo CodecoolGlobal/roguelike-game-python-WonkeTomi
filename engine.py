@@ -7,11 +7,11 @@ import random
 from util import key_pressed
 
 
-ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':magic_wand:': 'A20', ':toilet:': 'A10', ':white_cane:': 'A20', ':videocassette:': 'A5', ':bomb:': 'A23', ':toolbox:': 'D30', ':blue_square:': 'D5'}
+ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':firecracker:': 'A20', ':toilet:': 'A10', ':white_cane:': 'A20', ':videocassette:': 'A5', ':bomb:': 'A23', ':toolbox:': 'D30', ':blue_square:': 'D5'}
 NORMAL_ITEMS = [':brick:', list(ITEMS_DICT.keys())]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [[':rock:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
-BOSS = [[':skull:'], [":Russia:", ":T-Rex:", ":laptop:"]]
+MOBS = [':fire:', [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
+BOSS = [':skull:', [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
 DOOR = ':door:'
