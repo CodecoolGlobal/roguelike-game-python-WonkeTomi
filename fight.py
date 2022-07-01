@@ -25,6 +25,7 @@ def check_hp(character, enemy):
 
 
 def attack_menu(room):
+    sleep(1)
     pos = 0
     buttons = ["Attack", "Defend", "Item"]
     while isinstance(pos, int):
@@ -36,6 +37,7 @@ def attack_menu(room):
 
 
 def calc_damage(character, enemy_display, fight_type):
+    sleep(1)
     ui.clear_screen()
     print_messages = []
     if enemy_display in engine.MOBS[1]:
