@@ -3,6 +3,7 @@ import events
 import ui
 import engine
 import random
+from time import sleep
 
 
 def attack_phase_control(button):
@@ -24,16 +25,18 @@ def check_hp(character, enemy):
 
 
 def attack_menu(room):
-    ui.clear_screen()
     pos = 0
     buttons = ["Attack", "Defend", "Item"]
     while isinstance(pos, int):
+        ui.clear_screen()
+        ui.print_room(room)
         pos = ui.button_system(buttons, pos, attack_phase_control)
-    character_updated, enemy_updated = calc_damage(characters.main_character, room[2][3], pos)
+    character_updated, enemy_updated = calc_damage(characters.main_character, room[2][2], pos)
     return character_updated, enemy_updated
 
 
 def calc_damage(character, enemy_display, fight_type):
+    ui.clear_screen()
     print_messages = []
     if enemy_display in engine.MOBS[1]:
         enemy = characters.mobs[engine.MOBS[1].index(enemy_display)]
