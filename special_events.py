@@ -37,7 +37,7 @@ def choose_special(character, special):
     event_index = 2
     on_goings = []
     for event in POSSIBILITIES.keys():
-        if special[2][2] in event:
+        if special[2][3] in event:
             on_goings.append(POSSIBILITIES[event][event_index])
             on_goings.append(FACTOR[outcome])
             on_goings.append(POSSIBILITIES[event][outcome])

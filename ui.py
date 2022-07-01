@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from unicodedata import name
 import characters
 
@@ -289,14 +290,13 @@ def display_board(board):
 def print_message(message):
     terminal_x, terminal_y = os.get_terminal_size()
     max_length = max([len(word) for word in message]) + 2
-    print(max_length)
     print(("/" + max_length * '-' + "\\").center(terminal_x))
     for line in message:
         print(("|" + max_length * " " + '|').center(terminal_x))
         print(("|" + line.center(max_length) + "|").center(terminal_x))
     print(("|" + max_length * " " + '|').center(terminal_x))
     print(("\\" + max_length * '-' + "/").center(terminal_x))
-
+    time.sleep(5)
 
 def change_special_menu(button):
     if button == 0:
