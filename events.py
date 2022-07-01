@@ -55,7 +55,7 @@ def event_fight(character, enemy, room):
     if check_hp == "win":
         ui.print_message([event_win(character, enemy)])
     elif check_hp == "die":
-        ui.print_message([event_die(character, enemy)])
+        ui.print_message([event_die(character)])
     return characters.main_character
 
 
