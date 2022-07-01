@@ -7,6 +7,8 @@ import fight
 
 
 def check_event(room):
+    if event_die(characters.main_character) != None:
+        return "You died!"
     room_item = room[2][2]
     if room_item in engine.ITEMS_DICT.keys():
         event_item({room_item: engine.ITEMS_DICT[room_item]})
@@ -17,7 +19,7 @@ def check_event(room):
     elif room_item in [item[1] for item in engine.SPECIAL_EVENTS]:
         event_special(characters.main_character, room)
     else:
-        return(f"This is an empty room.")
+        return "This is an empty room."
 
 
 def check_item(character):
@@ -72,10 +74,9 @@ def event_win(character, enemy):
         return None
 
 
-def event_die(character, enemy):
-    enemy_name = emoji.demojize(enemy["EMOJI"])
+def event_die(character):
     if character["HP"] <= 0:
-        return f"You died by {enemy_name[1:-1]}! RIP"
+        return "You died! RIP"
     else:
         return None
 
