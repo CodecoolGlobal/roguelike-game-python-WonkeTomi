@@ -10,8 +10,8 @@ from util import key_pressed
 ITEMS_DICT = {':anatomical_heart:': 'H25', ':sushi:': 'H20', ':Christmas_tree:': 'A3', ':baby_bottle:': 'H10', ':magic_wand:': 'A20', ':toilet:': 'A10', ':white_cane:': 'A20', ':videocassette:': 'A5', ':bomb:': 'A23', ':toolbox:': 'D30', ':blue_square:': 'D5'}
 NORMAL_ITEMS = [':brick:', list(ITEMS_DICT.keys())]
 SPECIAL_EVENTS = [[':deciduous_tree:', ':evergreen_tree:'], [':house:', ':floppy_disk:'], [':hut:', ':castle:'], [':wood:', ':llama:'], [':rolling_on_the_floor_laughing:', ':banana:'], [':shuffle_tracks_button:', ':game_die:'], [':wood:', ':onion:'], [':sandwich:', ':pill:'], [':face_savoring_food:', ':soft_ice_cream:'], [':palms_up_together:', ':middle_finger:'], [':wood:', ':mushroom:']]
-MOBS = [[':rock:', ':zany_face:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
-BOSS = [[':fire:', ':skull:', ':fearful_face:'], [":Russia:", ":T-Rex:", ":laptop:"]]
+MOBS = [[':rock:'], [":vampire:", ":crocodile:", ":skunk:", ":butterfly:", ":clown_face:", ":dodo:", ":mosquito:", ":zombie:"]]
+BOSS = [[':skull:'], [":Russia:", ":T-Rex:", ":laptop:"]]
 EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
 DOOR = ':door:'
@@ -62,12 +62,12 @@ def create_board(width=4, height=4):
     room = []
     for items in range(2):
         room.append(create_room(NORMAL_ITEMS[0], countain_of_room=random.choice(NORMAL_ITEMS[1])))
-    for special in range(2):
+    for special in range(4):
         random_special = random.choice(SPECIAL_EVENTS)
         room.append(create_room(random_special[0], random_special[1]))
     for mobs in range(2):
-        room.append(create_room(random.choice(MOBS[0]), countain_of_room=random.choice(MOBS[1])))
-    room.append(create_room(random.choice(BOSS[0]), countain_of_room=random.choice(BOSS[1])))
+        room.append(create_room((MOBS[0]), countain_of_room=random.choice(MOBS[1])))
+    room.append(create_room((BOSS[0]), countain_of_room=random.choice(BOSS[1])))
     room.append(create_room(random.choice(EMPTY_ROOM), countain_of_room=characters.main_character["EMOJI"]))
     actual_room_count = len(room)
     while full_room_count > actual_room_count:

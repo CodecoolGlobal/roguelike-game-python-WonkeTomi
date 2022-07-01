@@ -6,12 +6,16 @@ import emoji
 
 
 def before_game():
-     ui.display_intro()
-     ui.print_menu()
+    # ui.display_intro()
+    ui.print_menu()
+
+
+def start_the_game():
+    engine.character_movement(engine.create_board())
 
 def main():
     before_game()
-    
+    start_the_game()
 
 if __name__ == '__main__':
-     ui.print_menu()
+    main()
