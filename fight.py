@@ -25,7 +25,6 @@ def check_hp(character, enemy):
 
 
 def attack_menu(room):
-    sleep(1)
     pos = 0
     buttons = ["Attack", "Defend", "Item"]
     while isinstance(pos, int):
@@ -37,7 +36,6 @@ def attack_menu(room):
 
 
 def calc_damage(character, enemy_display, fight_type):
-    sleep(1)
     ui.clear_screen()
     print_messages = []
     if enemy_display in engine.MOBS[1]:
@@ -90,7 +88,7 @@ def calc_damage(character, enemy_display, fight_type):
     if enemy_dmg < 1:
         enemy_dmg = 1
     character["HP"] -= round(enemy_dmg)
-    print_messages.append(f"{enemy_display} hit you and you lost {enemy_dmg} HP.")
+    print_messages.append(f"{enemy_display[1:-1]} hit you and you lost {enemy_dmg} HP.")
     ui.print_message(print_messages)
     return character, enemy
 
