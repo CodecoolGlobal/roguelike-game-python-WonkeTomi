@@ -3,6 +3,8 @@ import engine
 import emoji
 import special_events
 import ui
+import fight
+
 
 
 def check_event(room):
@@ -35,7 +37,7 @@ def check_item(character):
 
 
 def event_item(item, message='You found an item.'):
-    
+
     for _, value in item.items():
         if value[0] == "A" or value[0] == "D":
             characters.main_character["INVENTORY"].update(item)
@@ -47,8 +49,8 @@ def event_item(item, message='You found an item.'):
     return characters.main_character
 
 
-def event_fight(character, enemy):
-    print(enemy)
+def event_fight(character, enemy, room):
+    fight.attack_menu(room)
     pass
 
 

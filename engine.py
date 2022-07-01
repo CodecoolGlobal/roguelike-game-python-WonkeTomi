@@ -16,15 +16,18 @@ EMPTY_ROOM = [':butter:', ':fuel_pump:', ':collision:']
 FLOOR = ':black_large_square:'
 DOOR = ':door:'
 
+
 ROOM_COUNT = 16
 ROOM_ROWS_COUNT = 4
 ROOM_COLUMNS_COUNT = 4
+
 
 TOP = (1, 2)
 BOTTOM = (3, 2)
 LEFT = (2, 1)
 RIGHT = (2, 3)
 PLAYER_ICON = characters.main_character['EMOJI']
+
 
 NUMBER_OF_ROWS_OF_ROOMS = 4
 NUMBER_OF_ROWS_IN_A_ROOM = 5
@@ -161,11 +164,3 @@ def character_movement(board):
             else:
                 sounds.playsound_error()
 
-if __name__ == "__main__":
-    # for i in range(len(create_room('#', countain_of_room='8'))):
-    #     print(create_room('#', countain_of_room='8')[i])
-    board = create_board()
-    character_movement(board)
-    # room = get_room(board, 1)
-    # room[3][2] = PLAYER_ICON
-    # ui.print_room(room)
