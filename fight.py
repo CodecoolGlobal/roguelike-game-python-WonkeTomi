@@ -90,6 +90,7 @@ def calc_damage(character, enemy_display, fight_type):
     character["HP"] -= round(enemy_dmg)
     print_messages.append(f"{enemy_display[1:-1]} hit you and you lost {enemy_dmg} HP.")
     ui.print_message(print_messages)
+    sleep(3)
     return character, enemy
 
 
