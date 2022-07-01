@@ -38,7 +38,7 @@ def choose_special(character, special):
     event_index = 2
     on_goings = []
     for event in POSSIBILITIES.keys():
-        if special[2][3] in event:
+        if special[2][2] in event:
             on_goings.append(POSSIBILITIES[event][event_index])
             on_goings.append(FACTOR[outcome])
             on_goings.append(POSSIBILITIES[event][outcome])
@@ -47,7 +47,7 @@ def choose_special(character, special):
                 character["HP"] -= 20
             else:
                 character["HP"] += 20
-    ui.print_message(on_goings)
+            ui.print_message(on_goings)
     time.sleep(5)
 
 
