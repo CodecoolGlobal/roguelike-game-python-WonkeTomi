@@ -166,5 +166,5 @@ def character_movement(board):
                 put_player_on_board(board, current_room, LEFT)
             else:
                 sounds.playsound_error()
-        # current_room_cp = copy.deepcopy(current_room)
+
         events.check_event(get_room(copy.deepcopy(board), copy.deepcopy(current_room)))
