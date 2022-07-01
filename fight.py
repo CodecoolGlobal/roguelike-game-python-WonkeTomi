@@ -14,15 +14,13 @@ def attack_phase_control(button):
         return "item"
 
 
-def check_hp(room):
-    character = characters.main_character
-    enemy = room[2][2]
-    if enemy in engine.MOBS[1]:
-        enemy = characters.mobs[engine.MOBS[1].index(enemy)]
-    elif enemy in engine.BOSS[1]:
-        enemy = characters.bosses[engine.BOSS[1].index(enemy)]
-    while character["HP"] > 0 or enemy["HP"] > 0:
-        character, enemy = attack_menu(room)
+def check_hp(character, enemy):
+    if character["HP"] < 0:
+        return "die"
+    elif enemy["HP"] < 0:
+        return "win"
+    else:
+        return None
 
 
 def attack_menu(room):
@@ -30,27 +28,26 @@ def attack_menu(room):
     buttons = ["Attack", "Defend", "Item"]
     while isinstance(pos, int):
         pos = ui.button_system(buttons, pos, attack_phase_control)
-    character_updated, enemy_updated = calc_damage(characters.main_character, room[2][2], pos)
+    character_updated, enemy_updated = calc_damage(characters.main_character, room[2][3], pos)
     return character_updated, enemy_updated
 
 
-def calc_damage(character, enemy, fight_type):
-    print(enemy)
-    if enemy in engine.MOBS[1]:
-        enemy = characters.mobs[engine.MOBS[1].index(enemy)]
-    elif enemy in engine.BOSS[1]:
-        enemy = characters.bosses[engine.BOSS[1].index(enemy)]
-    
+def calc_damage(character, enemy_display, fight_type):
+    print_messages = []
+    if enemy_display in engine.MOBS[1]:
+        enemy = characters.mobs[engine.MOBS[1].index(enemy_display)]
+    elif enemy_display in engine.BOSS[1]:
+        enemy = characters.bosses[engine.BOSS[1].index(enemy_display)]
     
     atk_modifier, def_modifier = 1.0, 1.0
     luck = 0.5 + random.random()
     resistance = 1
-    enemy_display = enemy["EMOJI"]
+    enemy_emoji = enemy["EMOJI"]
 
     if luck > 1:
-        print("Lucky!")
+        print_messages.append("Lucky!")
     else:
-        print("Unlucky...")
+        print_messages.append("Unlucky...")
     if fight_type == "attack":
         if character["ATK"] > enemy["ATK"] and character["DEF"] > enemy["DEF"]:
             atk_modifier *= 1.25
@@ -63,7 +60,7 @@ def calc_damage(character, enemy, fight_type):
         if damage <= 0:
             damage = 1
         enemy["HP"] -= damage
-        print(f"You attacked {enemy_display} and dealt {damage} damage.")
+        print_messages.append(f"You attacked {enemy_emoji} and dealt {damage} damage.")
     elif fight_type == "defense":
         if character["ATK"] > enemy["ATK"] and character["DEF"] > enemy["DEF"]:
             def_modifier *= 1.25
@@ -75,10 +72,10 @@ def calc_damage(character, enemy, fight_type):
         resistance = round(character["DEF"] * def_modifier) - enemy["ATK"]
         if resistance < 5:
             resistance = 5
-        print(resistance)
-        print(f"You defended yourself and absorbed {resistance} damage.")
+        print_messages.append(f"You defended yourself and absorbed {resistance} damage.")
     elif fight_type == "item":
-        pass
+        print_messages.append("Sorry this feature is WIP.")
+        return character, enemy
     if enemy["ATK"] > character["ATK"]:
         enemy_atk_modifier = 1.1
     else:
@@ -86,14 +83,14 @@ def calc_damage(character, enemy, fight_type):
     enemy_dmg = enemy["ATK"] * enemy_atk_modifier - resistance
     if enemy_dmg < 1:
         enemy_dmg = 1
-    character["HP"] -= enemy_dmg
-    print(f"{enemy_display} hit you and you lost {enemy_dmg} HP.")
-    print(character)
+    character["HP"] -= round(enemy_dmg)
+    print_messages.append(f"{enemy_display} hit you and you lost {enemy_dmg} HP.")
+    ui.print_message(print_messages)
     return character, enemy
 
 
 def use_inventory(character):
-    pass
+    print("WIP")
 
 
 if __name__ == "__main__":
@@ -101,4 +98,3 @@ if __name__ == "__main__":
     #    calc_damage(characters.main_character, characters.CROCODILE, "attack")
     #random_room_for_testing = engine.create_room(random.choice(), random.choice(engine.MOBS[1]))
     attack_menu(engine.create_room(engine.MOBS[0],engine.MOBS[1][1]))
-    check_hp(attack_menu(engine.create_room(engine.MOBS[0],engine.MOBS[1][1])))
