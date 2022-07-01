@@ -6,7 +6,6 @@ import ui
 import fight
 
 
-
 def check_event(room):
     room_item = room[2][2]
     if room_item in engine.ITEMS_DICT.keys():
@@ -32,7 +31,7 @@ def check_item(character):
         elif item_type == "H":
             character["HP"] += item_value
         elif item_type == "M":
-            pass
+            print("Mana item picked up! (WIP)")
     return character
 
 
@@ -50,7 +49,8 @@ def event_item(item, message='You found an item.'):
 
 
 def event_fight(character, enemy, room):
-    fight.attack_menu(room)
+    while character["HP"] > 0 or enemy["HP"] > 0:
+        character, enemy = fight.attack_menu(room)
     pass
 
 
