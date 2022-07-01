@@ -48,7 +48,6 @@ def event_item(item, message='You found an item.'):
 
 def event_fight(character, enemy, room):
     ui.clear_screen()
-    ui.print_room(room)
     check_hp = fight.check_hp(character, enemy)
     while check_hp == None:
         character, enemy = fight.attack_menu(room)
