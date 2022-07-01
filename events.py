@@ -15,7 +15,7 @@ def check_event(room):
         event_fight(characters.main_character, characters.mobs[engine.MOBS[1].index(room_item)])
     elif room_item in engine.BOSS[1]:
         event_fight(characters.main_character, characters.bosses[engine.BOSS[1].index(room_item)])
-    elif room_item in special_events.POSSIBILITIES:
+    elif room_item in [item[1] for item in engine.SPECIAL_EVENTS]:
         event_special(characters.main_character, room)
     else:
         return f"This is an empty room."
@@ -57,7 +57,7 @@ def event_fight(character, enemy, room):
 def event_special(character, room):
     ui.clear_screen()
     ui.print_room(room)
-    special_events.choose_special(characters.main_character, room)
+    special_events.choose_special(character, room)
 
 
 def event_win(character, enemy):

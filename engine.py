@@ -134,7 +134,7 @@ def character_movement(board):
     while not game_over:
         ui.display_board(board)
         current_room, current_line, current_cell = search_and_clear_player_in_board(board, False)
-        events.check_event(get_room(board, current_room))
+        
 
         control_key = key_pressed()
         if control_key == ESC:
@@ -161,6 +161,8 @@ def character_movement(board):
             if is_in_the_board(current_room, current_room+1):
                 search_and_clear_player_in_board(board, True)    
                 put_player_on_board(board, current_room+1, LEFT)
+                
             else:
                 sounds.playsound_error()
+        events.check_event(get_room(board, current_room))
 
