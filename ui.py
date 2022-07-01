@@ -2,7 +2,7 @@ from pyexpat.errors import messages
 from unicodedata import name
 import characters
 
-from copy import copy
+import copy
 import emoji
 from util import clear_screen, key_pressed
 import time
@@ -61,7 +61,7 @@ def display_buttons(buttons):
 def create_buttons(buttons, pos):
     symbol_right = ' <-'
     symbol_left = '-> '
-    buttons_to_create = copy(buttons)
+    buttons_to_create = copy.copy(buttons)
     buttons_to_create[pos] = symbol_left + buttons_to_create[pos] + symbol_right
     return buttons_to_create
 
@@ -124,7 +124,7 @@ def add_items_info(info_table):
     new_item = f'{info_table[2]}      |============|'
     info_table = replace_list_item(info_table, new_item, 2)
 
-    new_item = f'{info_table[3]}      |            |'
+    new_item = f'{info_table[3]}                    '
     info_table = replace_list_item(info_table, new_item, 3)
 
     return info_table
@@ -146,7 +146,7 @@ def text_to_list(text):
 
 
 def print_items(items):
-    print('|', end='')
+    # print('|', end='')
     for item in items:
         print(emoji.emojize(item), end='')
     print()
@@ -235,9 +235,10 @@ def center_text(text_width, text_height):
 
 
 def print_room(room):
+    room_to_print = copy.deepcopy(room)
     clear_screen()
-    room[2][3] = room[2][2]
-    room[2][2] = engine.FLOOR
+    room_to_print[2][3] = room_to_print[2][2]
+    room_to_print[2][2] = engine.FLOOR
     reposition_player_icon(room)
     align_x_str, align_y_int = center_text(5, 5)
 
