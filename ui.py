@@ -297,7 +297,7 @@ def print_message(message):
         print(("|" + line.center(max_length) + "|").center(terminal_x))
     print(("|" + max_length * " " + '|').center(terminal_x))
     print(("\\" + max_length * '-' + "/").center(terminal_x))
-    time.sleep(5)
+
 
 def change_special_menu(button):
     if button == 0:
