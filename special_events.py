@@ -1,6 +1,7 @@
 import ui
 import random
 import characters
+import time
 
 
 FACTOR = ["You get fucked!", "You are lucky!"]
@@ -47,6 +48,7 @@ def choose_special(character, special):
             else:
                 character["HP"] += 20
     ui.print_message(on_goings)
+    time.sleep(5)
 
 
 if __name__ == "__main__":

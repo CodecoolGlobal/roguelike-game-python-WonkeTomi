@@ -36,55 +36,57 @@ def check_item(character):
 
 
 def event_item(item, message='You found an item.'):
-
     for _, value in item.items():
         if value[0] == "A" or value[0] == "D":
             characters.main_character["INVENTORY"].update(item)
-
         else:
-
             characters.main_character["BAG"].update(item)
-
     return characters.main_character
 
 
 def event_fight(character, enemy, room):
-    while character["HP"] > 0 or enemy["HP"] > 0:
+    ui.clear_screen()
+    ui.print_room(room)
+    check_hp = fight.check_hp(character, enemy)
+    while check_hp == None:
         character, enemy = fight.attack_menu(room)
-    pass
+        check_hp = fight.check_hp(character, enemy)
+    if check_hp == "win":
+        ui.print_message([event_win(character, enemy)])
+    elif check_hp == "die":
+        ui.print_message([event_die(character, enemy)])
+    return characters.main_character
 
 
 def event_special(character, room):
     ui.clear_screen()
     ui.print_room(room)
-    special_events.choose_special(characters.main_character, room)
+    special_events.choose_special(character, room)
 
 
 def event_win(character, enemy):
-    character
-    enemy_emoji = enemy["EMOJI"]
-    congrats = emoji.emojize(":clapping_hands:")
+    enemy_name = emoji.demojize(enemy["EMOJI"])
     if enemy["HP"] <= 0:
-        return f"You defeated {enemy_emoji}! Good job! {congrats}"
+        return f"You defeated {enemy_name[1:-1]}! Good job!"
     else:
         return None
 
 
 def event_die(character, enemy):
-    enemy_emoji = enemy["EMOJI"]
-    tomb = emoji.emojize(":latin_cross:")
+    enemy_name = emoji.demojize(enemy["EMOJI"])
     if character["HP"] <= 0:
-        return f"You died by {enemy_emoji}. RIP {tomb}"
+        return f"You died by {enemy_name[1:-1]}! RIP"
     else:
         return None
 
 
 if __name__ == "__main__":
     #characters.CROCODILE["HP"] = 0
-    print(event_win(characters.main_character, characters.SKUNK))
-    print(event_die(characters.main_character, characters.SKUNK))
-    event_item({':dagger:':'A10'})
-    event_item({':baby_bottle:':'H10'})
-    print(characters.main_character["BAG"])
-    check_item(characters.main_character)
-    print(characters.main_character)
+    # print(event_win(characters.main_character, characters.SKUNK))
+    # print(event_die(characters.main_character, characters.SKUNK))
+    # event_item({':dagger:':'A10'})
+    # event_item({':baby_bottle:':'H10'})
+    # print(characters.main_character["BAG"])
+    # check_item(characters.main_character)
+    # print(characters.main_character)
+    event_fight(characters.main_character, characters.CROCODILE, engine.create_room(engine.MOBS[0], engine.MOBS[1][0]))
