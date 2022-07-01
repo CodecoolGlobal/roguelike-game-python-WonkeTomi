@@ -4,6 +4,7 @@ import sounds
 import events
 import characters
 import random
+import copy
 from util import key_pressed
 
 
@@ -139,27 +140,31 @@ def character_movement(board):
             game_over = True
         elif control_key == 'w':
             if is_in_the_board(current_room-4, current_room-4):
-                search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room-4, BOTTOM)
+                search_and_clear_player_in_board(board, True)
+                current_room -= 4    
+                put_player_on_board(board, current_room, BOTTOM)
             else:
                 sounds.playsound_error()
         elif control_key == 's':
             if is_in_the_board(current_room+4, current_room+4):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room+4, TOP)
+                current_room += 4
+                put_player_on_board(board, current_room, TOP)
             else:
                 sounds.playsound_error()
         elif control_key == 'a':
             if is_in_the_board(current_room, current_room-1):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room-1, RIGHT)
+                current_room -= 1
+                put_player_on_board(board, current_room, RIGHT)
             else:
                 sounds.playsound_error()
         elif control_key == 'd':
             if is_in_the_board(current_room, current_room+1):
                 search_and_clear_player_in_board(board, True)    
-                put_player_on_board(board, current_room+1, LEFT)
+                current_room += 1
+                put_player_on_board(board, current_room, LEFT)
             else:
                 sounds.playsound_error()
-        # current_room, current_line, current_cell = search_and_clear_player_in_board(board, False)
-        events.check_event(get_room(board, current_room))
+        # current_room_cp = copy.deepcopy(current_room)
+        events.check_event(get_room(copy.deepcopy(board), copy.deepcopy(current_room)))
