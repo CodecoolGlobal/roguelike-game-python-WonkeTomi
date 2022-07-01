@@ -57,7 +57,7 @@ def event_fight(character, enemy, room):
 def event_special(character, room):
     ui.clear_screen()
     ui.print_room(room)
-    special_events.choose_special(room)
+    special_events.choose_special(characters.main_character, room)
 
 
 def event_win(character, enemy):
