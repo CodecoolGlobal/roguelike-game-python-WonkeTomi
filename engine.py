@@ -64,11 +64,15 @@ def create_board(width=4, height=4):
     '''
     full_room_count = width * height
     room = []
+    random_special_character = []
+    while len(random_special_character) != 4:
+            random_special = random.choice(SPECIAL_EVENTS)
+            if random_special not in random_special_character:
+                random_special_character.append(random_special)
     for items in range(2):
         room.append(create_room(NORMAL_ITEMS[0], countain_of_room=random.choice(NORMAL_ITEMS[1])))
-    for special in range(4):
-        random_special = random.choice(SPECIAL_EVENTS)
-        room.append(create_room(random_special[0], random_special[1]))
+    for special in random_special_character:    
+        room.append(create_room(special[0], special[1]))
     for mobs in range(2):
         room.append(create_room((MOBS[0]), countain_of_room=random.choice(MOBS[1])))
     room.append(create_room((BOSS[0]), countain_of_room=random.choice(BOSS[1])))
@@ -170,3 +174,7 @@ def character_movement(board):
                 sounds.playsound_error()
 
         events.check_event(get_room(copy.deepcopy(board), copy.deepcopy(current_room)))
+
+
+if __name__ == "__main__":
+    create_board()
